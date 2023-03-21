@@ -74,7 +74,6 @@ request = Net::HTTP::Get.new(url)
 request["Authorization"] = "Bearer #{ENV['PREDICTHQ_ACCESS_TOKEN']}"
 
 response = https.request(request)
-# puts JSON.parse(response.read_body)
 
 
 event_array = JSON.parse(response.read_body)["results"]
