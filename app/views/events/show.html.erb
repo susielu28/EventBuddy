@@ -1,1 +1,48 @@
 <h1>Show Event</h1>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+
+<div class="container py-5">
+  <div class="row">
+    <div class="col-md-8">
+      <div class="card">
+        <div class="card-body">
+          <div class="d-flex align-items-center justify-content-between mb-3">
+            <h3 class="mb-0 card-title"><%= @event.name %></h3>
+            <div>
+              <% if current_user == @event.user %>
+                <%= link_to "Edit", edit_event_path(@event), class: "btn btn-primary me-2" %>
+                <%= link_to "Delete", event_path(@event), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "btn btn-danger me-2" %>
+              <% end %>
+            </div>
+          </div>
+          <div class="row">
+
+            <div class="col-md-6">
+              <dl class="row">
+                <dt class="col-sm-4"><strong>Event Name:</strong></dt>
+                <dd class="col-sm-8"><%= @event.name %></dd>
+
+                <dt class="col-sm-4"><strong>Price:</strong></dt>
+                <dd class="col-sm-8"><%= number_to_currency(@event.price) %></dd>
+
+                <dt class="col-sm-4"><strong>Venue:</strong></dt>
+                <dd class="col-sm-8"><%= @event.venue %></dd>
+
+                <dt class="col-sm-4"><strong>Genre:</strong></dt>
+                <dd class="col-sm-8"><%= @event.genre %></dd>
+
+                <dt class="col-sm-4"><strong>Date:</strong></dt>
+                <dd class="col-sm-8"><%= @event.date %></dd>
+              </dl>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-4">
+      <%= link_to "Return", events_path, class: "btn btn-primary" %>
+    </div>
+  </div>
+</div>

@@ -5,6 +5,7 @@ class EventsController < ApplicationController
   # GET /events
   def index
     @events = Event.all
+    apply_filters
   end
 
   # GET /events/1
@@ -67,6 +68,12 @@ class EventsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def event_params
-    params.require(:event).permit(:name, :date, :time, :price, :venue, :genre, :info)
+    params.require(:event).permit(:name, :date, :price, :venue, :genre, :info)
+  end
+
+  def apply_filters
+    @events = @events.where('name ILIKE ?', "%#{params[:name]}%") if params[:name]
+    @events = @events.where('venue ILIKE ?', "%#{params[:venue]}%") if params[:venue]
+    @events = @events.where('genre ILIKE ?', "%#{params[:genre]}%") if params[:genre]
   end
 end
