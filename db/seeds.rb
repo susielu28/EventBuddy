@@ -83,7 +83,7 @@ event_array.each do |event_data|
 event = Event.create!(
   name: event_data["title"],
   date: DateTime.parse(event_data["start"]).to_date,
-  time: DateTime.parse(event_data["start"]).strftime("%H:%M:%S"),
+  # time: DateTime.parse(event_data["start"]).strftime("%H:%M:%S"),
   venue: event_data["entities"].first ? event_data["entities"].first["formatted_address"] : "MSG",
   genre: event_data["category"],
   info: event_data["description"],
