@@ -10,7 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+
 ActiveRecord::Schema[7.0].define(version: 2023_03_22_104327) do
+
+
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -35,8 +38,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_22_104327) do
 
   create_table "events", force: :cascade do |t|
     t.string "name"
-    t.date "date"
-    t.time "time"
     t.decimal "price"
     t.string "venue"
     t.string "genre"
@@ -44,8 +45,12 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_22_104327) do
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.datetime "date"
+    t.float "latitude"
+    t.float "longitude"
     t.index ["user_id"], name: "index_events_on_user_id"
   end
+
 
   create_table "taggings", force: :cascade do |t|
     t.bigint "tag_id"
@@ -76,6 +81,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_22_104327) do
     t.datetime "updated_at", null: false
     t.integer "taggings_count", default: 0
     t.index ["name"], name: "index_tags_on_name", unique: true
+
+  create_table "pg_search_documents", force: :cascade do |t|
+    t.text "content"
+    t.string "searchable_type"
+    t.bigint "searchable_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["searchable_type", "searchable_id"], name: "index_pg_search_documents_on_searchable"
+
   end
 
   create_table "users", force: :cascade do |t|

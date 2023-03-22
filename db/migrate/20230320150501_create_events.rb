@@ -5,7 +5,7 @@ class CreateEvents < ActiveRecord::Migration[7.0]
       t.date :date
       t.time :time
       t.decimal :price
-      t.string :venue
+      t.string :venue, default: "Madison Square Garden"
       t.string :genre
       t.text :info
       t.references :user, null: false, foreign_key: true

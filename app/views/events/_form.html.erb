@@ -1,0 +1,13 @@
+<%= simple_form_for event, html: { class: 'flatpickr-form' }, wrapper: :vertical_form, wrapper_mappings: { date: :vertical_radio_and_checkboxes } do |f| %>
+<fieldset>
+  <%= f.input :name %>
+  <%= f.input :date, label: "Date and Time", as: :string, input_html: { data: { controller: 'flatpickr'} }%>
+  <%= f.input :price %>
+  <%= f.input :venue %>
+  <%= f.input :genre %>
+  <%= f.input :info %>
+  <%= f.input :user_id, as: :hidden, input_html: { value: current_user.id } %>
+</fieldset>
+<%= f.button :submit, "Add Event", class: "btn btn-primary" %>
+
+<% end %>
