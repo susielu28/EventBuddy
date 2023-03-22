@@ -13,9 +13,15 @@ class Event < ApplicationRecord
   conditions: ->(query) {
     { price: (query[:price_min]..query[:price_max]), date: (query[:date_min]..query[:date_max]) }
   }
+
+
+  geocoded_by :venue
+  after_validation :geocode, if: :will_save_change_to_venue?
+
   pg_search_scope :search_all_events,
-against: [ :name, :date, :price, :venue, :genre ],
-using: {
+   against: [ :name, :date, :price, :venue, :genre ],
+  using: {
   tsearch: { prefix: true }
-}
+  }
+
 end
