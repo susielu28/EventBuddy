@@ -1,16 +1,9 @@
-// Specific CSS for your home-page
-.home-cards {
-  display: flex;
-  justify-content: space-between; /* This will evenly distribute the cards horizontally */
-  align-items: center; /* This will center the cards vertically */
-
-}
-
 .cards {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  grid-gap: 16px;
+  // grid-gap: 16px;
   height: 300
+
 }
 
 // Smallest device

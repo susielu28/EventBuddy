@@ -1,2 +1,69 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTQ9MFfNx8EgIvEF8foDFFyExDZY9oJ79AnLigmIlK_&s);">
+  <div class="main-stuff">
+    <div class="home-title text-center py-5">
+      <h1 class="text-light">EventBuddy</h1>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <%= form_with url: events_path, method: :get, class: "d-flex justify-content-center my-4" do %>
+              <%= text_field_tag :query,
+                params[:query],
+                class: "form-control",
+                placeholder: "Find an Event"
+              %>
+              <%= submit_tag "Search", class: "btn btn-primary" %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+
+      <h2 class="text-light">Find a buddy, attend an event.</h2>
+    </div>
+    <div class="jumbotron text-center">
+        <p>NEEDS DETAILS</p>
+      <%= link_to "Find a Buddy", new_event_path(@event), class: "btn btn-lg btn-primary" %>
+    </div>
+  </div>
+</div>
+<!-- code a "How it works" section -->
+<div class="container">
+  <h2 class="text-center how-it-works-heading"></h2>
+</div>
+
+<div class="cards">
+  <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg)">
+    Breakfast
+  </div>
+
+  <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/lunch.jpg)">
+    Lunch
+  </div>
+
+  <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/dinner.jpg)">
+    Dinner
+  </div>
+</div>
+<% if @events.present? %>
+  <div class="row">
+    <% @events.each do |event| %>
+      <div class="col-md-4">
+        <%= link_to event_path(event), class: "text-decoration-none" do %>
+          <div class="card mb-4">
+            <% if event.photo.attached? %>
+              <%= cl_image_tag event.photo.key, height: 200, crop: :fill, class: "card-img-top" %>
+            <% else %>
+              <img src="https://upload.wikimedia.org/wikipedia/commons/0/0b/SFOperaHouse2_%288189967420%29.jpg" alt="default bike picture" class="card-img-top">
+            <% end %>
+            <div class="card-body">
+              <h2 class="card-title"><%= event.name %></h2>
+              <p class="card-text"><%= event.venue %></p>
+              <p class="card-text"><%= event.genre %></p>
+              <p class="card-text"><%= event.date %></p>
+              <p class="card-text"><%= event.price %></p>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+<% end %>
