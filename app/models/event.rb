@@ -13,4 +13,9 @@ class Event < ApplicationRecord
   conditions: ->(query) {
     { price: (query[:price_min]..query[:price_max]), date: (query[:date_min]..query[:date_max]) }
   }
+  pg_search_scope :search_all_events,
+against: [ :name, :date, :price, :venue, :genre ],
+using: {
+  tsearch: { prefix: true }
+}
 end
