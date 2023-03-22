@@ -10,10 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
-ActiveRecord::Schema[7.0].define(version: 2023_03_22_104327) do
-
-
+ActiveRecord::Schema[7.0].define(version: 2023_03_22_140723) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -51,6 +48,14 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_22_104327) do
     t.index ["user_id"], name: "index_events_on_user_id"
   end
 
+  create_table "pg_search_documents", force: :cascade do |t|
+    t.text "content"
+    t.string "searchable_type"
+    t.bigint "searchable_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["searchable_type", "searchable_id"], name: "index_pg_search_documents_on_searchable"
+  end
 
   create_table "taggings", force: :cascade do |t|
     t.bigint "tag_id"
@@ -81,15 +86,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_22_104327) do
     t.datetime "updated_at", null: false
     t.integer "taggings_count", default: 0
     t.index ["name"], name: "index_tags_on_name", unique: true
-
-  create_table "pg_search_documents", force: :cascade do |t|
-    t.text "content"
-    t.string "searchable_type"
-    t.bigint "searchable_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["searchable_type", "searchable_id"], name: "index_pg_search_documents_on_searchable"
-
   end
 
   create_table "users", force: :cascade do |t|
@@ -100,6 +96,14 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_22_104327) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "first_name"
+    t.string "last_name"
+    t.string "gender"
+    t.integer "age"
+    t.text "bio"
+    t.boolean "organizer"
+    t.string "company_name"
+    t.string "location"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
