@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   resources :event_members, only: [:destroy]
 
   resources :users, only: [:index] # Adds a route for users index
+  resources :profiles, only: [:edit, :update]
   # ...
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html

@@ -13,4 +13,7 @@ class Event < ApplicationRecord
   conditions: ->(query) {
     { price: (query[:price_min]..query[:price_max]), date: (query[:date_min]..query[:date_max]) }
   }
+
+  geocoded_by :venue
+  after_validation :geocode, if: :will_save_change_to_venue?
 end
