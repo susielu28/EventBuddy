@@ -6,4 +6,8 @@ class UsersController < ApplicationController
       @users = User.all
     end
   end
+
+  def user_params
+    params.require(:user).permit(:name, :interest_list)
+  end
 end
