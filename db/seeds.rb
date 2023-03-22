@@ -86,7 +86,8 @@ event = Event.create!(
   venue: event_data["entities"].first ? event_data["entities"].first["formatted_address"] : "Madison Square Garden",
   genre: event_data["category"],
   info: event_data["description"],
-  user: User.all.sample
+  user: User.all.sample,
+  price: rand(100)
 )
 
 puts "Event created: #{event.name}"
