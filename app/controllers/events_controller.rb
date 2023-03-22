@@ -16,6 +16,10 @@ class EventsController < ApplicationController
 
   # GET /events/1
   def show
+    @markers = [{
+      lat: @event.latitude,
+      lng: @event.longitude
+    }]
   end
 
   # GET /events/new
