@@ -34,6 +34,9 @@
 
                 <dt class="col-sm-4"><strong>Date:</strong></dt>
                 <dd class="col-sm-8"><%= @event.date %></dd>
+
+                <dt class="col-sm-4"><strong>Photo:</strong></dt>
+                <%= cl_image_tag @event.photo.key  %>
               </dl>
             </div>
           </div>

@@ -6,8 +6,9 @@
   <%= f.input :venue %>
   <%= f.input :genre %>
   <%= f.input :info %>
+  <%= f.input :photo, as: :file %>
   <%= f.input :user_id, as: :hidden, input_html: { value: current_user.id } %>
-</fieldset>
+  </fieldset>
 <%= f.button :submit, "Add Event", class: "btn btn-primary" %>
 
 <% end %>
