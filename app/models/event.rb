@@ -5,7 +5,7 @@ class Event < ApplicationRecord
   has_one_attached :photo
 
 
-  has_many :users, through: :event_members
+  #has_many :users, through: :event_members
 
 
   include PgSearch::Model
