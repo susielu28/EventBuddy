@@ -31,31 +31,38 @@ User.destroy_all
 
 User.create!(
   email: "simon@test.com",
-  password: "123456"
+  password: "123456",
+  first_name: "Simon",
 )
 User.create!(
   email: "lukas@test.com",
-  password: "123456"
+  password: "123456",
+  first_name: "Lukas"
 )
 User.create!(
   email: "joao@test.com",
-  password: "123456"
+  password: "123456",
+  first_name: "Joao"
 )
 User.create!(
   email: "rui@test.com",
-  password: "123456"
+  password: "123456",
+  first_name: "Rui"
 )
 User.create!(
   email: "susan@test.com",
-  password: "123456"
+  password: "123456",
+  first_name: "Susan"
 )
 User.create!(
   email: "george@test.com",
-  password: "123456"
+  password: "123456",
+  first_name: "George"
 )
 User.create!(
   email: "camilla@test.com",
-  password: "123456"
+  password: "123456",
+  first_name: "Camilla"
 )
 
 Event.destroy_all
