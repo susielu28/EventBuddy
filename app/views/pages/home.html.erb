@@ -1,4 +1,4 @@
-<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTQ9MFfNx8EgIvEF8foDFFyExDZY9oJ79AnLigmIlK_&s);">
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://media.istockphoto.com/id/1366076851/photo/concert-and-festival-background-crowd-of-people-partying.jpg?b=1&s=170667a&w=0&k=20&c=ERh7CMxTv49VNVN1rT3JqVrrpMts4fFkIiGYFkFVwNY=">
   <div class="main-stuff">
     <div class="home-title text-center py-5">
       <h1 class="text-light">EventBuddy</h1>
@@ -19,30 +19,70 @@
 
       <h2 class="text-light">Find a buddy, attend an event.</h2>
     </div>
-    <div class="jumbotron text-center">
+    <%# <div class="jumbotron text-center">
         <p>NEEDS DETAILS</p>
       <%= link_to "Find a Buddy", new_event_path(@event), class: "btn btn-lg btn-primary" %>
-    </div>
+    <%# </div> %>
   </div>
 </div>
 <!-- code a "How it works" section -->
 <div class="container">
   <h2 class="text-center how-it-works-heading"></h2>
 </div>
-
+<div class="main-info">
 <div class="cards">
-  <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg)">
-    Breakfast
+  <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://cloudfront-us-east-2.images.arcpublishing.com/reuters/JO6NKXGTVFK4FHDEIFSBYUTUB4.jpg">
+    Sporting Events in Lisbon
   </div>
 
-  <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/lunch.jpg)">
-    Lunch
+  <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://media.timeout.com/images/105948176/750/562/image.jpg">
+    Concerts in London
   </div>
 
-  <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/dinner.jpg)">
-    Dinner
+  <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://www.one4all.ie/media/wysiwyg/f/e/feature_2.jpg">
+    Festivals in Berlin
   </div>
 </div>
+
+<br>
+
+<h2 class="font-weight-bold">How EventBuddy Works</h2>
+
+<br>
+<div class="cards-circle">
+  <div class="card-circle" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.pexels.com/photos/1190297/pexels-photo-1190297.jpeg?cs=srgb&dl=pexels-wendy-wei-1190297.jpg&fm=jpg">
+    Choose an Event
+  </div>
+
+  <div class="card-circle" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://img.lemde.fr/2022/11/28/190/0/1900/1266/1440/960/60/0/dcfd1d3_1669643680595-1998-06-21t120000z-610734464-rp1drigdogac-rtrmadp-3-nodesc.JPG">
+    <div>
+      Find a Buddy
+    </div>
+  </div>
+
+  <div class="card-circle" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://media.istockphoto.com/id/1126207231/photo/having-the-time-of-their-lives.jpg?s=612x612&w=0&k=20&c=Ukz-hSQx9OiGFNKF8lycAdO0zWeJB1cFcbTlDjgIt9M=">
+    Join a Group
+  </div>
+</div>
+<br>
+<h2 class="font-weight-bold">Upcoming Events</h2>
+<br>
+
+<div class="cards">
+  <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://cloudfront-us-east-2.images.arcpublishing.com/reuters/JO6NKXGTVFK4FHDEIFSBYUTUB4.jpg">
+    Event 1
+  </div>
+
+  <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://media.timeout.com/images/105948176/750/562/image.jpg">
+    Event 2
+  </div>
+
+  <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://www.one4all.ie/media/wysiwyg/f/e/feature_2.jpg">
+    Event 3
+  </div>
+</div>
+</div>
+
 <% if @events.present? %>
   <div class="row">
     <% @events.each do |event| %>
@@ -67,3 +107,16 @@
     <% end %>
   </div>
 <% end %>
+
+<div class="footer">
+  <div class="footer-links">
+    <a href="#"><i class="fab fa-github"></i></a>
+    <a href="#"><i class="fab fa-instagram"></i></a>
+    <a href="#"><i class="fab fa-facebook"></i></a>
+    <a href="#"><i class="fab fa-twitter"></i></a>
+    <a href="#"><i class="fab fa-linkedin"></i></a>
+  </div>
+  <div class="footer-copyright">
+    Find a buddy, attend an event!
+  </div>
+</div>
