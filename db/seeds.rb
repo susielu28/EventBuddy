@@ -32,6 +32,7 @@ Message.destroy_all
 puts "Messages destroy"
 Event.destroy_all
 puts "event destroy"
+Chatroom.destroy_all
 User.destroy_all
 puts "user destroy"
 

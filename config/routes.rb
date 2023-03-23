@@ -21,6 +21,8 @@ Rails.application.routes.draw do
 
   resources :profiles, only: [:edit, :update]
 
+  get '/search', to: 'events#search'
+
   post "/tag", to: "users#tag"
   # ...
 
