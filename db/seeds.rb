@@ -27,7 +27,14 @@ require "net/http"
 # place_id = response.read_body["results"][0]["id"]
 
 # To grab events for place with specific id (ie. place.scope=…)
+puts "Hello"
+Message.destroy_all
+puts "Messages destroy"
+Event.destroy_all
+puts "event destroy"
 User.destroy_all
+puts "user destroy"
+
 
 User.create!(
   email: "simon@test.com",
