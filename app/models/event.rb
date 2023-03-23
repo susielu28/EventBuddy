@@ -3,6 +3,11 @@ class Event < ApplicationRecord
   has_many :event_members, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_one_attached :photo
+
+
+  has_many :users, through: :event_members
+
+
   include PgSearch::Model
 
   pg_search_scope :global_search,
