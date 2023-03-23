@@ -1,0 +1,9 @@
+<% if @user == current_user %>
+<%= simple_form_for :user, url: "/tag", method: :post do |f| %>
+  <%= f.input :interest_list, collection: User::INTERESTS, as: :check_boxes  %>
+  <%= f.submit %>
+<% end %>
+<% end %>
+<% @user.interest_list.each do |tag| %>
+<p><%= tag %></p>
+<% end %>
