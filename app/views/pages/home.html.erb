@@ -1,122 +1,124 @@
-<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://media.istockphoto.com/id/1366076851/photo/concert-and-festival-background-crowd-of-people-partying.jpg?b=1&s=170667a&w=0&k=20&c=ERh7CMxTv49VNVN1rT3JqVrrpMts4fFkIiGYFkFVwNY=">
-  <div class="main-stuff">
-    <div class="home-title text-center py-5">
-      <h1 class="text-light">EventBuddy</h1>
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12">
-            <%= form_with url: events_path, method: :get, class: "d-flex justify-content-center my-4" do %>
-              <%= text_field_tag :query,
-                params[:query],
-                class: "form-control",
-                placeholder: "Find an Event"
-              %>
-              <%= submit_tag "Search", class: "btn btn-primary" %>
-            <% end %>
-          </div>
-        </div>
-      </div>
-
-      <h2 class="text-light">Find a buddy, attend an event.</h2>
-    </div>
-    <%# <div class="jumbotron text-center">
-        <p>NEEDS DETAILS</p>
-      <%= link_to "Find a Buddy", new_event_path(@event), class: "btn btn-lg btn-primary" %>
-    <%# </div> %>
-  </div>
-</div>
-<!-- code a "How it works" section -->
-<div class="container">
-  <h2 class="text-center how-it-works-heading"></h2>
-</div>
-<div class="main-info">
-<div class="cards">
-  <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://cloudfront-us-east-2.images.arcpublishing.com/reuters/JO6NKXGTVFK4FHDEIFSBYUTUB4.jpg">
-    Sporting Events in Lisbon
-  </div>
-
-  <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://media.timeout.com/images/105948176/750/562/image.jpg">
-    Concerts in London
-  </div>
-
-  <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://www.one4all.ie/media/wysiwyg/f/e/feature_2.jpg">
-    Festivals in Berlin
-  </div>
-</div>
-
-<br>
-
-<h2 class="font-weight-bold">How EventBuddy Works</h2>
-
-<br>
-<div class="cards-circle">
-  <div class="card-circle" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.pexels.com/photos/1190297/pexels-photo-1190297.jpeg?cs=srgb&dl=pexels-wendy-wei-1190297.jpg&fm=jpg">
-    Choose an Event
-  </div>
-
-  <div class="card-circle" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://img.lemde.fr/2022/11/28/190/0/1900/1266/1440/960/60/0/dcfd1d3_1669643680595-1998-06-21t120000z-610734464-rp1drigdogac-rtrmadp-3-nodesc.JPG">
-    <div>
-      Find a Buddy
-    </div>
-  </div>
-
-  <div class="card-circle" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://media.istockphoto.com/id/1126207231/photo/having-the-time-of-their-lives.jpg?s=612x612&w=0&k=20&c=Ukz-hSQx9OiGFNKF8lycAdO0zWeJB1cFcbTlDjgIt9M=">
-    Join a Group
-  </div>
-</div>
-<br>
-<h2 class="font-weight-bold">Upcoming Events</h2>
-<br>
-
-<div class="cards">
-  <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://cloudfront-us-east-2.images.arcpublishing.com/reuters/JO6NKXGTVFK4FHDEIFSBYUTUB4.jpg">
-    Event 1
-  </div>
-
-  <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://media.timeout.com/images/105948176/750/562/image.jpg">
-    Event 2
-  </div>
-
-  <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://www.one4all.ie/media/wysiwyg/f/e/feature_2.jpg">
-    Event 3
-  </div>
-</div>
-</div>
-
-<% if @events.present? %>
-  <div class="row">
-    <% @events.each do |event| %>
-      <div class="col-md-4">
-        <%= link_to event_path(event), class: "text-decoration-none" do %>
-          <div class="card mb-4">
-            <% if event.photo.attached? %>
-              <%= cl_image_tag event.photo.key, height: 200, crop: :fill, class: "card-img-top" %>
-            <% else %>
-              <img src="https://upload.wikimedia.org/wikipedia/commons/0/0b/SFOperaHouse2_%288189967420%29.jpg" alt="default bike picture" class="card-img-top">
-            <% end %>
-            <div class="card-body">
-              <h2 class="card-title"><%= event.name %></h2>
-              <p class="card-text"><%= event.venue %></p>
-              <p class="card-text"><%= event.genre %></p>
-              <p class="card-text"><%= event.date %></p>
-              <p class="card-text"><%= event.price %></p>
+<div class="body">
+  <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://media.istockphoto.com/id/1366076851/photo/concert-and-festival-background-crowd-of-people-partying.jpg?b=1&s=170667a&w=0&k=20&c=ERh7CMxTv49VNVN1rT3JqVrrpMts4fFkIiGYFkFVwNY=">
+    <div class="main-stuff">
+      <div class="home-title text-center py-5">
+        <h1 class="text-light">EventBuddy</h1>
+        <div class="container">
+          <div class="row">
+            <div class="col-md-12">
+              <%= form_with url: events_path, method: :get, class: "d-flex justify-content-center my-4" do %>
+                <%= text_field_tag :query,
+                  params[:query],
+                  class: "form-control",
+                  placeholder: "Find an Event"
+                %>
+                <%= submit_tag "Search", class: "btn btn-primary" %>
+              <% end %>
             </div>
           </div>
-        <% end %>
-      </div>
-    <% end %>
-  </div>
-<% end %>
+        </div>
 
-<div class="footer">
-  <div class="footer-links">
-    <a href="#"><i class="fab fa-github"></i></a>
-    <a href="#"><i class="fab fa-instagram"></i></a>
-    <a href="#"><i class="fab fa-facebook"></i></a>
-    <a href="#"><i class="fab fa-twitter"></i></a>
-    <a href="#"><i class="fab fa-linkedin"></i></a>
+        <h2 class="text-light">Find a buddy, attend an event.</h2>
+      </div>
+      <%# <div class="jumbotron text-center">
+          <p>NEEDS DETAILS</p>
+        <%= link_to "Find a Buddy", new_event_path(@event), class: "btn btn-lg btn-primary" %>
+      <%# </div> %>
+    </div>
   </div>
-  <div class="footer-copyright">
-    Find a buddy, attend an event!
+  <!-- code a "How it works" section -->
+  <div class="container">
+    <h2 class="text-center how-it-works-heading"></h2>
+  </div>
+  <div class="main-info">
+  <div class="cards">
+    <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://cloudfront-us-east-2.images.arcpublishing.com/reuters/JO6NKXGTVFK4FHDEIFSBYUTUB4.jpg">
+      Sporting Events in Lisbon
+    </div>
+
+    <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://media.timeout.com/images/105948176/750/562/image.jpg">
+      Concerts in London
+    </div>
+
+    <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://www.one4all.ie/media/wysiwyg/f/e/feature_2.jpg">
+      Festivals in Berlin
+    </div>
+  </div>
+
+  <br>
+
+  <h2 class="font-weight-bold">How EventBuddy Works</h2>
+
+  <br>
+  <div class="cards-circle">
+    <div class="card-circle" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.pexels.com/photos/1190297/pexels-photo-1190297.jpeg?cs=srgb&dl=pexels-wendy-wei-1190297.jpg&fm=jpg">
+      Choose an Event
+    </div>
+
+    <div class="card-circle" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://img.lemde.fr/2022/11/28/190/0/1900/1266/1440/960/60/0/dcfd1d3_1669643680595-1998-06-21t120000z-610734464-rp1drigdogac-rtrmadp-3-nodesc.JPG">
+      <div>
+        Find a Buddy
+      </div>
+    </div>
+
+    <div class="card-circle" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://media.istockphoto.com/id/1126207231/photo/having-the-time-of-their-lives.jpg?s=612x612&w=0&k=20&c=Ukz-hSQx9OiGFNKF8lycAdO0zWeJB1cFcbTlDjgIt9M=">
+      Join a Group
+    </div>
+  </div>
+  <br>
+  <h2 class="font-weight-bold">Upcoming Events</h2>
+  <br>
+
+  <div class="cards">
+    <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://media.timeout.com/images/105560223/750/422/image.jpg">
+      Elton John in London
+    </div>
+
+    <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://cdne-totv8-prod-westeurope.azureedge.net/media/34057/the-stadium.jpg">
+      Tottenham vs Brighton
+    </div>
+
+    <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://imgproxy.berlinonline.net/0GpjYx9hMm2mStrId8yMepNDZ_WNDd6mH147zstYlVk/resizing_type:fit/width:1200/height:1200/gravity:ce/enlarge:0/q:70/cb:2023032122/aHR0cHM6Ly9wb3B1bGEtbWlkZGxld2FyZS5zMy5hbWF6b25hd3MuY29tL2JvLW1pZGRsZXdhcmUvYm8uYmRlX2NoYW5uZWwuZXZlbnQvaW1hZ2VzLzEzMy85ZmEyZGFjYi1kNWZiLTI0MWQtMGM4NS1mY2Q5OTA3MTIwZjcuanBn.jpg">
+      Rock of Ages in Berlin
+    </div>
+  </div>
+  </div>
+
+  <% if @events.present? %>
+    <div class="row">
+      <% @events.each do |event| %>
+        <div class="col-md-4">
+          <%= link_to event_path(event), class: "text-decoration-none" do %>
+            <div class="card mb-4">
+              <% if event.photo.attached? %>
+                <%= cl_image_tag event.photo.key, height: 200, crop: :fill, class: "card-img-top" %>
+              <% else %>
+                <img src="https://upload.wikimedia.org/wikipedia/commons/0/0b/SFOperaHouse2_%288189967420%29.jpg" alt="default bike picture" class="card-img-top">
+              <% end %>
+              <div class="card-body">
+                <h2 class="card-title"><%= event.name %></h2>
+                <p class="card-text"><%= event.venue %></p>
+                <p class="card-text"><%= event.genre %></p>
+                <p class="card-text"><%= event.date %></p>
+                <p class="card-text"><%= event.price %></p>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+
+  <div class="footer">
+    <div class="footer-links">
+      <a href="#"><i class="fab fa-github"></i></a>
+      <a href="#"><i class="fab fa-instagram"></i></a>
+      <a href="#"><i class="fab fa-facebook"></i></a>
+      <a href="#"><i class="fab fa-twitter"></i></a>
+      <a href="#"><i class="fab fa-linkedin"></i></a>
+    </div>
+    <div class="footer-copyright">
+      Find a buddy, attend an event!
+    </div>
   </div>
 </div>
