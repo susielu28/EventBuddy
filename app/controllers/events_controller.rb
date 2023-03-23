@@ -5,17 +5,25 @@ class EventsController < ApplicationController
   # GET /events
   def index
     @events = Event.all
-    apply_filters
+    apply_filters if params
     @markers = @events.geocoded.map do |event|
       {
         lat: event.latitude,
-        lng: event.longitude
+        lng: event.longitude,
+        info_window_html: render_to_string(partial: "info_window", locals: {event: event}),
+        marker_html: render_to_string(partial: "marker")
       }
     end
   end
 
   # GET /events/1
   def show
+    @markers = [{
+      lat: @event.latitude,
+      lng: @event.longitude,
+      info_window_html: render_to_string(partial: "info_window", locals: {event: @event}),
+      marker_html: render_to_string(partial: "marker")
+    }]
   end
 
   # GET /events/new
@@ -74,15 +82,15 @@ class EventsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def event_params
-    params.require(:event).permit(:name, :date, :price, :venue, :genre, :info)
+    params.require(:event).permit(:name, :date, :price, :venue, :genre, :info, :photo)
   end
 
   def apply_filters
-    @events = @events.where('name ILIKE ?', "%#{params[:name]}%") if params[:name] != ""
-    @events = @events.where('venue ILIKE ?', "%#{params[:venue]}%") if params[:venue] != ""
-    @events = @events.where('genre ILIKE ?', "%#{params[:genre]}%") if params[:genre] != ""
-    @events = Event.search_all_events(params[:query]) if params[:query] != ""
-    @events = @events.select { |event| event.date >= DateTime.parse(params[:date_min]) && event.date <= DateTime.parse(params[:date_max]) } if params[:date_min] != "" && params[:date_max] != ""
-    @events = @events.select { |event| event.price >= params[:price_min].to_i && event.price <= params[:price_max].to_i } if params[:price_min] != "" && params[:price_max] != ""
+    @events = @events.where('name ILIKE ?', "%#{params[:name]}%") if params[:name].present? && params[:name] != ""
+    @events = @events.where('venue ILIKE ?', "%#{params[:venue]}%") if params[:venue].present? && params[:venue] != ""
+    @events = @events.where('genre ILIKE ?', "%#{params[:genre]}%") if params[:genre].present? && params[:genre] != ""
+    @events = Event.search_all_events(params[:query]) if params[:query].present? && params[:query] != ""
+    @events = @events.select { |event| event.date >= DateTime.parse(params[:date_min]) && event.date <= DateTime.parse(params[:date_max]) } if (params[:date_min].present? && params[:date_min] != "") && (params[:date_max].present? && params[:date_max] != "")
+    @events = @events.select { |event| event.price >= params[:price_min].to_i && event.price <= params[:price_max].to_i } if (params[:price_min].present? && params[:price_min] != "") && (params[:price_max].present? && params[:price_max] != "")
   end
 end

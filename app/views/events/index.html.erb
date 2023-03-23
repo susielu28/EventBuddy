@@ -1,4 +1,10 @@
 <h1>All Events</h1>
+
+<div style="width: 100%; height: 600px;"
+  data-controller="map"
+  data-map-markers-value="<%= @markers.to_json %>"
+  data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
+
 <%= form_tag events_path, method: :get do %>
   <%= text_field_tag :query, params[:query], placeholder: "Search events" %>
   <%= text_field_tag :name, params[:name], placeholder: "Name" %>
@@ -12,15 +18,26 @@
 <% end %>
 
 <% if @events.present? %>
-  <% @events.each do |event| %>
-    <div class="border mb-2">
-      <h2><%= event.name %></h2>
-      <p><%= event.venue %></p>
-      <p><%= event.genre %></p>
-      <p><%= event.date %></p>
-      <p><%= event.price %></p>
-    </div>
-  <% end %>
-<% else %>
-  <p>No results found...</p>
+  <div class="row">
+    <% @events.each do |event| %>
+      <div class="col-md-4">
+        <%= link_to event_path(event), class: "card-link" do %>
+          <div class="card mb-4">
+            <% if event.photo.attached? %>
+              <%= cl_image_tag event.photo.key, height: 200, crop: :fill, class: "card-img-top" %>
+            <% else %>
+              <img src="https://upload.wikimedia.org/wikipedia/commons/0/0b/SFOperaHouse2_%288189967420%29.jpg" alt="default bike picture" class="card-img-top">
+            <% end %>
+            <div class="card-body">
+              <h2 class="card-title"><%= event.name %></h2>
+              <p class="card-text"><%= event.venue %></p>
+              <p class="card-text"><%= event.genre %></p>
+              <p class="card-text"><%= event.date %></p>
+              <p class="card-text"><%= event.price %></p>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
 <% end %>
