@@ -74,7 +74,7 @@ User.create!(
 
 Event.destroy_all
 
-event_coordinates = ["52.520008,13.404954", "51.509865,-0.118092", "38.736946,-9.142685", "-37.80036998,144.9715749"]
+event_coordinates = ["52.520008,13.404954", "51.509865,-0.118092"]
 event_coordinates.each do |coordinate|
 event_categories = ["conferences", "expos", "community", "performing-arts", "concerts", "festivals", "sports"]
 event_categories.each do |category|
@@ -109,4 +109,11 @@ event = Event.create!(
 puts "Event created: #{event.name}"
 end
 end
+end
+
+100.times do
+EventMember.create(
+  user: User.all.sample,
+  event: Event.all.sample
+)
 end

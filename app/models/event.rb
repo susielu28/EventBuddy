@@ -4,8 +4,7 @@ class Event < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_one_attached :photo
 
-
-  #has_many :users, through: :event_members
+  # has_many :attendees, through: :event_members, source: :users
 
 
   include PgSearch::Model
