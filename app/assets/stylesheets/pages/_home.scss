@@ -3,7 +3,12 @@
   display: flex;
   justify-content: space-between; /* This will evenly distribute the cards horizontally */
   align-items: center; /* This will center the cards vertically */
+
 }
+
+.body {
+  background-color: #c8d6dd;
+ }
 
 .cards-circle {
   display: flex;
