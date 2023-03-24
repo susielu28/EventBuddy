@@ -111,7 +111,7 @@ end
 end
 end
 
-100.times do
+1500.times do
 EventMember.create(
   user: User.all.sample,
   event: Event.all.sample

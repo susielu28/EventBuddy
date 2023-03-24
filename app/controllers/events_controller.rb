@@ -24,6 +24,8 @@ class EventsController < ApplicationController
       info_window_html: render_to_string(partial: "info_window", locals: {event: @event}),
       marker_html: render_to_string(partial: "marker")
     }]
+    @event = Event.find(params[:id])
+    @comment = Comment.new
   end
 
   # GET /events/new
