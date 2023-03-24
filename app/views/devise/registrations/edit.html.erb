@@ -19,8 +19,13 @@
     <%= f.input :password_confirmation, required: false, input_html: { autocomplete: "new-password" } %>
     <%= f.input :current_password, required: true, hint: "we need your current password to confirm your changes", input_html: { autocomplete: "current-password" } %>
     <%= f.input :organizer, required: true, autofocus: true %>
+    <%= f.input :photo, as: :file %>
+
   </div>
 
+ <div class="form-actions">
+    <%= f.button :submit, "Save Profile", class: "btn btn-primary" %>
+  </div>
 
 <% end %>
 

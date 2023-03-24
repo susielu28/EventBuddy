@@ -8,6 +8,7 @@ class UsersController < ApplicationController
   end
   def show
     @user = User.find(params[:id])
+    @chatroom = Chatroom.where(user_1: current_user, user_2: @user).or(Chatroom.where(user_1: @user, user_2: current_user)).first
   end
   def tag
     current_user.interest_list.each { |interest| current_user.interest_list.remove(interest) }
