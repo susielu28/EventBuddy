@@ -6,6 +6,7 @@ class EventsController < ApplicationController
   # GET /events
   def index
     @events = Event.all
+    @events = Event.order(date: :asc)
     apply_filters if params
     @markers = @events.geocoded.map do |event|
       {
