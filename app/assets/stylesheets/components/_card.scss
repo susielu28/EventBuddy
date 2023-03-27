@@ -54,3 +54,16 @@
   justify-content: space-between;
   align-items: stretch;
 }
+
+.event-date {
+  flex: 1; /* Use all remaining space */
+}
+
+.event-price {
+  text-align: right;
+}
+
+.card-text {
+  display: flex; /* Use flexbox to create a horizontal layout */
+  justify-content: space-between; /* Space the elements apart */
+}

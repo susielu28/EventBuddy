@@ -105,7 +105,7 @@ event = Event.create!(
   genre: event_data["category"],
   info: event_data["description"],
   user: User.all.sample,
-  price: rand(100)
+  price: rand(5..100)
 )
 
 puts "Event created: #{event.name}"
