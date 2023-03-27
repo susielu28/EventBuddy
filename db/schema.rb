@@ -73,7 +73,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_24_131905) do
   create_table "events", force: :cascade do |t|
     t.string "name"
     t.decimal "price"
-    t.string "venue", default: "Madison Square Garden"
+    t.string "venue"
     t.string "genre"
     t.text "info"
     t.bigint "user_id", null: false
