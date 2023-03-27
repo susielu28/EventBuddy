@@ -84,3 +84,5 @@ group :test do
 end
 
 gem "cloudinary"
+
+gem 'flatpickr_rails', '~> 1.1'
