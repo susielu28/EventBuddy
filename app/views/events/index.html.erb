@@ -1,21 +1,21 @@
 <h1>All Events</h1>
 
-<div style="width: 100%; height: 600px;"
-  data-controller="map"
-  data-map-markers-value="<%= @markers.to_json %>"
-  data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
-
 <%= form_tag events_path, method: :get do %>
   <%= text_field_tag :query, params[:query], placeholder: "Search events" %>
   <%= text_field_tag :name, params[:name], placeholder: "Name" %>
   <%= text_field_tag :venue, params[:venue], placeholder: "Venue" %>
   <%= text_field_tag :genre, params[:genre], placeholder: "Genre" %>
-  <%= text_field_tag :date_min, params[:date_min], placeholder: "Minimum date", type: "date" %>
-  <%= text_field_tag :date_max, params[:date_max], placeholder: "Maximum date", type: "date" %>
+  <%= date_field_tag :date_min, params[:date_min], placeholder: "Minimum date" %>
+  <%= date_field_tag :date_max, params[:date_max], placeholder: "Maximum date" %>
   <%= text_field_tag :price_min, params[:price_min], placeholder: "Minimum price", type: "number" %>
   <%= text_field_tag :price_max, params[:price_max], placeholder: "Maximum price", type: "number" %>
   <%= submit_tag "Search" %>
 <% end %>
+
+<div style="width: 100%; height: 600px;"
+  data-controller="map"
+  data-map-markers-value="<%= @markers.to_json %>"
+  data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
 
 <% if @events.present? %>
   <div class="row">

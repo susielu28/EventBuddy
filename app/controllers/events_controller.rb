@@ -111,11 +111,12 @@ class EventsController < ApplicationController
   end
 
   def apply_filters
+    puts params.inspect
     @events = @events.where('name ILIKE ?', "%#{params[:name]}%") if params[:name].present? && params[:name] != ""
     @events = @events.where('venue ILIKE ?', "%#{params[:venue]}%") if params[:venue].present? && params[:venue] != ""
     @events = @events.where('genre ILIKE ?', "%#{params[:genre]}%") if params[:genre].present? && params[:genre] != ""
     @events = Event.search_all_events(params[:query]) if params[:query].present? && params[:query] != ""
-    @events = @events.select { |event| event.date >= DateTime.parse(params[:date_min]) && event.date <= DateTime.parse(params[:date_max]) } if (params[:date_min].present? && params[:date_min] != "") && (params[:date_max].present? && params[:date_max] != "")
-    @events = @events.select { |event| event.price >= params[:price_min].to_i && event.price <= params[:price_max].to_i } if (params[:price_min].present? && params[:price_min] != "") && (params[:price_max].present? && params[:price_max] != "")
+    @events = @events.where(date: DateTime.parse(params[:date_min])..DateTime.parse(params[:date_max])) if (params[:date_min].present? && params[:date_min] != "") && (params[:date_max].present? && params[:date_max] != "")
+    @events = @events.where('price >= ? AND price <= ?', params[:price_min], params[:price_max]) if params[:price_min].present? && params[:price_max].present?
   end
 end
