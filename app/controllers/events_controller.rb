@@ -2,6 +2,7 @@ class EventsController < ApplicationController
   before_action :set_event, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, except: [:index, :show]
 
+
   # GET /events
   def index
     @events = Event.all
@@ -73,6 +74,28 @@ class EventsController < ApplicationController
     else
       redirect_to events_path, alert: "You can only delete your own events."
     end
+  end
+
+  def attend
+    @event = Event.find(params[:event_id])
+    event_member = @event.event_members.new(user: current_user)
+    if event_member.save
+      flash.notice = "You are now attending this event."
+    else
+      flash.alert = "There was an error joining the event. Please try again."
+    end
+    redirect_to event_path(@event)
+  end
+
+  def unattend
+    @event = Event.find(params[:event_id])
+    event_member = @event.event_members.find_by(user: current_user)
+    if event_member&.destroy
+      flash.notice = "You are no longer attending this event."
+    else
+      flash.alert = "An error occurred while removing you from the event."
+    end
+    redirect_to @event
   end
 
   private

@@ -14,9 +14,12 @@
           <li class="nav-item active">
             <%= link_to "Home", root_path, class: "nav-link" %>
           </li>
-          <%# <li class="nav-item">
-            <%= link_to "Messages", "#", class: "nav-link" %>
-          <%# </li> %>
+          <li class="nav-item">
+            <%= link_to "My Events", my_events_users_path, class: "nav-link" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "My Chats", my_chats_users_path, class: "nav-link" %>
+          </li>
           <li class="nav-item dropdown">
             <%= image_tag "https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/v1674661608/nwr2zrhvbdqdmjavgc8f.jpg", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
