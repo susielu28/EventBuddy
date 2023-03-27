@@ -33,6 +33,7 @@ puts "Messages destroy"
 Event.destroy_all
 puts "event destroy"
 Chatroom.destroy_all
+puts "Chatromm destroy"
 User.destroy_all
 puts "user destroy"
 
@@ -112,9 +113,11 @@ end
 end
 end
 
-1500.times do
-EventMember.create(
-  user: User.all.sample,
-  event: Event.all.sample
-)
+User.all.each do |user|
+  10.times do
+    EventMember.create(
+      user: user,
+      event: Event.all.sample
+    )
+  end
 end

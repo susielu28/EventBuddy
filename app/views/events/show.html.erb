@@ -39,6 +39,13 @@
                 <%= cl_image_tag @event.photo.key  %>
               </dl>
             </div>
+            <% if user_signed_in? %>
+              <% if @event.event_members.exists?(user: current_user) %>
+                <%= button_to "Unattend", event_unattend_path(@event), method: :delete, class: "btn btn-danger mt-4" %>
+              <% else %>
+                <%= button_to "Attend", event_attend_path(@event), method: :post, class: "btn btn-primary mt-4" %>
+              <% end %>
+            <% end %>
           </div>
         </div>
       </div>

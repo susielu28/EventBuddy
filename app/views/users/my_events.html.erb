@@ -1,0 +1,18 @@
+<h1>Events I'm Attending</h1>
+
+<div class="container">
+  <div class="row">
+    <% @events.each do |event| %>
+      <div class="col-md-4">
+        <div class="card mb-4">
+          <div class="card-body">
+            <h5 class="card-title"><%= event.name %></h5>
+            <p class="card-text">Venue: <%= event.venue %></p>
+            <p class="card-text">Date: <%= event.date %></p>
+            <%= link_to "View Event", event_path(event), class: "btn btn-primary" %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
