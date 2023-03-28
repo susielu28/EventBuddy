@@ -1,7 +1,7 @@
 <div class= "container">
 <div class="grid">
   <header class="page-header">
-    <div class="content">
+    <div class="title-container">
       <h1 class="mb-0 card-title"><%= @event.name %></h1>
     </div>
   </header>
@@ -19,28 +19,32 @@
       <div class="container">
         <div class="row">
           <div class="col-md-12">
-            <div class="card-event">
+            <div class="card-event event-details">
               <div class="card-body-event">
                 <% if current_user == @event.user %>
                   <%= link_to "Edit", edit_event_path(@event), class: "btn btn-primary me-2" %>
                   <%= link_to "Delete", event_path(@event), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "btn btn-danger me-2" %>
                 <% end %>
-                <dl class="row">
-                  <dt class="col-sm-4"><strong>Price:</strong></dt>
-                  <dd class="col-sm-8"><%= number_to_currency(@event.price) %></dd>
+              <div class="row">
+                <div class="col-sm-8">
+                <h2 class="card-title-event">Details</h2>
+                  <dl class="row">
 
-                  <dt class="col-sm-4"><strong>Venue:</strong></dt>
-                  <dd class="col-sm-8"><%= @event.venue %></dd>
+                    <dt class="col-sm-4"><strong><i class="fas fa-money-bill-wave"></i> Price:</strong></dt>
+                    <dd class="col-sm-8"><%= number_to_currency(@event.price, unit: '€') %></dd>
 
-                  <dt class="col-sm-4"><strong>Genre:</strong></dt>
-                  <dd class="col-sm-8"><%= @event.genre %></dd>
+                    <dt class="col-sm-4"><strong><i class="fas fa-map-marker-alt"></i> Venue:</strong></dt>
+                    <dd class="col-sm-8"><%= @event.venue %></dd>
 
-                  <dt class="col-sm-4"><strong>Date:</strong></dt>
-                  <dd class="col-sm-8"><%= @event.date %></dd>
+                    <dt class="col-sm-4"><strong><i class="fas fa-calendar-day"></i> Date:</strong></dt>
+                    <dd class="col-sm-8"><%= @event.date.strftime("%d %B, %Y") %></dd>
+                  </dl>
+                </div>
+                <div class="col-sm-4">
+                  <%= cl_image_tag(get_image_url(@event.genre), class: "event-photo img-fluid") %>
+                </div>
+              </div>
 
-                  <dt class="col-sm-4"><strong>Photo:</strong></dt>
-                  <%= cl_image_tag @event.photo.key %>
-                </dl>
                 <% if user_signed_in? %>
                   <% if @event.event_members.exists?(user: current_user) %>
                     <%= button_to "Unattend", event_unattend_path(@event), method: :delete, class: "btn btn-danger mt-4" %>
@@ -50,9 +54,9 @@
                 <% end %>
               </div>
             </div>
-            <div class="card-event">
+            <div class="card-event event-attendees">
               <div class="card-body-event">
-                <h2 class="card-title">Event Attendees</h2>
+                <h2 class="card-title-event">Event Attendees</h2>
                 <ul class="list-group">
                   <% @event.event_members.each do |member| %>
                     <li class="list-group-item">
@@ -65,9 +69,10 @@
           </div>
         </div>
         <div class="d-flex justify-content-between">
-          <div class="card-event" style="flex: 1;">
+          <%# <div class="card-event" style="flex: 1;"> %>
+          <div class="card-event event-comments">
             <div class="card-body-event">
-              <h2 class="card-title-event"><strong>Comments</strong></h2>
+              <h2 class="card-title-event">Comments</h2>
               <ul class="list-group">
                 <% @event.comments.each do |comment| %>
                   <li class="list-group-item">

@@ -77,10 +77,30 @@
             <div class="card-body">
 
             <h2 class="card-title"><%= event.name %></h2>
-            <p class="card-text"><%= event.venue %></p>
-            <p class="card-text">
-            <span class="mr-2"><i class="fas fa-calendar-alt"></i> <%= event.date.strftime('%B %d, %Y') %></span>
-              <span class="mr-2"><i class="fas fa-money-bill-wave"></i> <%= number_to_currency(event.price, precision: 2, unit: "€") %></span>
+
+<div class="d-flex justify-content-between">
+  <span><i class="fas fa-calendar-alt"></i> <%= event.date.strftime("%d %B, %Y") %></span>
+  <span><%= number_to_currency(event.price, precision: 2, unit: "€") %> <i class="fas fa-money-bill-wave"></i></span>
+</div>
+<br>
+<p class="card-text venue"><i class="fas fa-map-marker-alt"></i>&nbsp;<%= event.venue.present? ? event.venue : "Madison Square Garden, 4 Pennsylvania Plaza, New York, NY" %></p>
+
+<style>
+  .venue {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start
+  }
+
+  .venue i {
+    margin-right: 5px;
+    align: left
+  }
+</style>
+
+
+
+
             </div>
           </div>
         <% end %>
