@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   resources :events do
     resources :comments, only: [:create]
     resources :event_members, only: [:create]
+    post "attend", to: "events#attend", as: "attend"
+    delete "unattend", to: "events#unattend", as: "unattend"
   end
 
   resources :comments, only: [:edit, :update, :destroy]
@@ -13,6 +15,8 @@ Rails.application.routes.draw do
 
   resources :users, only: [:index, :show] do
     resources :chatrooms, only: :create
+    get :my_events, on: :collection
+    get :my_chats, on: :collection
   end
 
   resources :chatrooms, only: :show do
@@ -20,6 +24,8 @@ Rails.application.routes.draw do
   end
 
   resources :profiles, only: [:edit, :update]
+
+  get '/search', to: 'events#search'
 
   post "/tag", to: "users#tag"
   # ...

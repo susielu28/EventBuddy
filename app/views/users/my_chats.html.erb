@@ -1,0 +1,22 @@
+<h1>My Chats</h1>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <ul class="list-group">
+        <% @chatrooms.each do |chatroom| %>
+          <li class="list-group-item">
+            <% other_user = chatroom.user_1 == current_user ? chatroom.user_2 : chatroom.user_1 %>
+            <%= link_to "#{other_user.first_name} #{other_user.last_name}", chatroom_path(chatroom) %>
+            <% last_message = chatroom.messages.order(created_at: :desc).first %>
+            <% if last_message %>
+              <small class="text-muted"> - Last message: <%= last_message.created_at.strftime("%a %b %e at %l:%M %p") %></small>
+            <% else %>
+              <small class="text-muted"> - No messages yet</small>
+            <% end %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</div>

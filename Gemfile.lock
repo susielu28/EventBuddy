@@ -119,6 +119,8 @@ GEM
     erubi (1.12.0)
     execjs (2.8.1)
     ffi (1.15.5)
+    flatpickr_rails (1.1.0)
+      railties (>= 3.0)
     font-awesome-sass (6.3.0)
       sassc (~> 2.0)
     geocoder (1.8.1)
@@ -208,6 +210,7 @@ GEM
       thor (~> 1.0)
       zeitwerk (~> 2.5)
     rake (13.0.6)
+    redis (4.8.1)
     regexp_parser (2.7.0)
     reline (0.3.2)
       io-console (~> 0.5)
@@ -274,8 +277,7 @@ GEM
     zeitwerk (2.6.7)
 
 PLATFORMS
-  arm64-darwin-21
-  ruby
+  arm64-darwin-22
   x86_64-linux
 
 DEPENDENCIES
@@ -287,6 +289,7 @@ DEPENDENCIES
   debug
   devise
   dotenv-rails
+  flatpickr_rails (~> 1.1)
   font-awesome-sass (~> 6.1)
   geocoder
   jbuilder
@@ -295,6 +298,7 @@ DEPENDENCIES
   pg_search
   puma (~> 5.0)
   rails (~> 7.0.4, >= 7.0.4.3)
+  redis (~> 4.0)
   sassc-rails
   selenium-webdriver
   simple_form!

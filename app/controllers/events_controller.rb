@@ -1,10 +1,14 @@
 class EventsController < ApplicationController
+  include EventsHelper
+
   before_action :set_event, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, except: [:index, :show]
+
 
   # GET /events
   def index
     @events = Event.all
+    @events = Event.order(date: :asc)
     apply_filters if params
     @markers = @events.geocoded.map do |event|
       {
@@ -75,6 +79,28 @@ class EventsController < ApplicationController
     end
   end
 
+  def attend
+    @event = Event.find(params[:event_id])
+    event_member = @event.event_members.new(user: current_user)
+    if event_member.save
+      flash.notice = "You are now attending this event."
+    else
+      flash.alert = "There was an error joining the event. Please try again."
+    end
+    redirect_to event_path(@event)
+  end
+
+  def unattend
+    @event = Event.find(params[:event_id])
+    event_member = @event.event_members.find_by(user: current_user)
+    if event_member&.destroy
+      flash.notice = "You are no longer attending this event."
+    else
+      flash.alert = "An error occurred while removing you from the event."
+    end
+    redirect_to @event
+  end
+
   private
 
   # Use callbacks to share common setup or constraints between actions.
@@ -88,11 +114,12 @@ class EventsController < ApplicationController
   end
 
   def apply_filters
+    puts params.inspect
     @events = @events.where('name ILIKE ?', "%#{params[:name]}%") if params[:name].present? && params[:name] != ""
     @events = @events.where('venue ILIKE ?', "%#{params[:venue]}%") if params[:venue].present? && params[:venue] != ""
     @events = @events.where('genre ILIKE ?', "%#{params[:genre]}%") if params[:genre].present? && params[:genre] != ""
     @events = Event.search_all_events(params[:query]) if params[:query].present? && params[:query] != ""
-    @events = @events.select { |event| event.date >= DateTime.parse(params[:date_min]) && event.date <= DateTime.parse(params[:date_max]) } if (params[:date_min].present? && params[:date_min] != "") && (params[:date_max].present? && params[:date_max] != "")
-    @events = @events.select { |event| event.price >= params[:price_min].to_i && event.price <= params[:price_max].to_i } if (params[:price_min].present? && params[:price_min] != "") && (params[:price_max].present? && params[:price_max] != "")
+    @events = @events.where(date: DateTime.parse(params[:date_min])..DateTime.parse(params[:date_max])) if (params[:date_min].present? && params[:date_min] != "") && (params[:date_max].present? && params[:date_max] != "")
+    @events = @events.where('price >= ? AND price <= ?', params[:price_min], params[:price_max]) if params[:price_min].present? && params[:price_max].present?
   end
 end

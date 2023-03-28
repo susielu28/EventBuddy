@@ -14,4 +14,9 @@ class User < ApplicationRecord
   has_many :event_members, dependent: :destroy
   has_many :events, through: :event_members
   INTERESTS = ["conferences", "expos", "community", "performing-arts", "concerts", "festivals", "sports"]
+
+  def events_attending
+    event_members.includes(:event).map(&:event)
+  end
+  
 end
