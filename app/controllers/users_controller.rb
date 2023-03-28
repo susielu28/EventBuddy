@@ -23,9 +23,9 @@ class UsersController < ApplicationController
   end
 
   def my_events
-    @events = current_user.events_attending
+    @my_events = current_user.events_attending
 
-    @markers = @events.map do |event|
+    @my_events_markers = @my_events.map do |event|
       {
         lat: event.latitude,
         lng: event.longitude,
