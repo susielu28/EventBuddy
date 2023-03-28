@@ -1,100 +1,57 @@
-<% if @user == current_user %>
-  <div class="container py-5">
-    <div class="row">
-      <div class="col-md-8">
-        <div class="card">
-          <div class="card-body">
-            <h2 class="card-title">Profile Information</h2>
-            <dl class="row">
-              <dt class="col-sm-4">First Name:</dt>
-              <dd class="col-sm-8"><%= @user.first_name %></dd>
-
-              <dt class="col-sm-4">Last Name:</dt>
-              <dd class="col-sm-8"><%= @user.last_name %></dd>
-
-              <dt class="col-sm-4">Gender:</dt>
-              <dd class="col-sm-8"><%= @user.gender %></dd>
-
-              <dt class="col-sm-4">Age:</dt>
-              <dd class="col-sm-8"><%= @user.age %></dd>
-
-              <dt class="col-sm-4">Bio:</dt>
-              <dd class="col-sm-8"><%= @user.bio %></dd>
-
-              <dt class="col-sm-4">Organizer:</dt>
-              <dd class="col-sm-8"><%= @user.organizer ? 'Yes' : 'No' %></dd>
-
-              <dt class="col-sm-4">Company Name:</dt>
-              <dd class="col-sm-8"><%= @user.company_name %></dd>
-
-              <dt class="col-sm-4">Location:</dt>
-              <dd class="col-sm-8"><%= @user.location %></dd>
-            </dl>
-          <%= simple_form_for :user, url: "/tag", method: :post do |f| %>
-              <%= f.input :interest_list, collection: User::INTERESTS, as: :check_boxes  %>
-              <%= f.submit %>
-            <% end %>
-            <% @user.interest_list.each do |tag| %>
-              <p><%= tag %></p>
-            <% end %>
-          </div>
-        </div>
-      </div>
-    <div class="col-md-4">
-      <%= link_to "Edit Profile", edit_user_registration_path, class: "btn btn-primary" %>
-    </div>
-  </div>
-</div>
-<% else %>
-  <div class="container py-5">
-    <div class="row">
-      <div class="col-md-8">
-        <div class="card">
-          <div class="card-body">
-            <h2 class="card-title">Profile Information</h2>
-            <dl class="row">
-              <dt class="col-sm-4">First Name:</dt>
-              <dd class="col-sm-8"><%= @user.first_name %></dd>
-
-              <dt class="col-sm-4">Last Name:</dt>
-              <dd class="col-sm-8"><%= @user.last_name %></dd>
-
-              <dt class="col-sm-4">Gender:</dt>
-              <dd class="col-sm-8"><%= @user.gender %></dd>
-
-              <dt class="col-sm-4">Age:</dt>
-              <dd class="col-sm-8"><%= @user.age %></dd>
-
-              <dt class="col-sm-4">Bio:</dt>
-              <dd class="col-sm-8"><%= @user.bio %></dd>
-
-              <dt class="col-sm-4">Organizer:</dt>
-              <dd class="col-sm-8"><%= @user.organizer ? 'Yes' : 'No' %></dd>
-
-              <dt class="col-sm-4">Company Name:</dt>
-              <dd class="col-sm-8"><%= @user.company_name %></dd>
-
-              <dt class="col-sm-4">Location:</dt>
-              <dd class="col-sm-8"><%= @user.location %></dd>
-            </dl>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-<% end %>
-
-<div class="container mt-4">
-  <div class="row">
-    <div class="col">
-      <%= link_to "Return", :back, class: "btn btn-primary" %>
-    </div>
-    <div class="col">
-    <% if @chatroom %>
-      <%= link_to "Open Chat", chatroom_path(@chatroom), class: "btn btn-primary" %>
-      <% else %>
-      <%= link_to "Open Chat", user_chatrooms_path(@user), data: {turbo_method: :post}, class: "btn btn-primary" %>
+  <div class="col-md-4">
+    <% if @user == current_user %>
+      <%= link_to "Return", :back, class: "btn btn-primary mb-3 text-start" %>
     <% end %>
+    <% if @chatroom %>
+      <%= link_to "Open Chat", chatroom_path(@chatroom), class: "btn btn-primary mb-3" %>
+    <% else %>
+      <%= link_to "Open Chat", user_chatrooms_path(@user), data: {turbo_method: :post}, class: "btn btn-primary mb-3" %>
+    <% end %>
+  </div>
+  <div class="col-md-8 mx-auto">
+    <div class="card">
+      <div class="card-body">
+        <% if @user.photo.attached? %>
+          <%= cl_image_tag @user.photo.key, height: 100, crop: :fill, class: "card-img-top" %>
+        <% else %>
+          <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png" alt="default profile picture" class="card-img-top">
+        <% end %>
+        <h2 class="card-title">Profile Information</h2>
+        <dl class="row">
+          <dt class="col-sm-4">First Name:</dt>
+          <dd class="col-sm-8"><%= @user.first_name %></dd>
+
+          <dt class="col-sm-4">Last Name:</dt>
+          <dd class="col-sm-8"><%= @user.last_name %></dd>
+
+          <dt class="col-sm-4">Gender:</dt>
+          <dd class="col-sm-8"><%= @user.gender %></dd>
+
+          <dt class="col-sm-4">Age:</dt>
+          <dd class="col-sm-8"><%= @user.age %></dd>
+
+          <dt class="col-sm-4">Bio:</dt>
+          <dd class="col-sm-8"><%= @user.bio %></dd>
+
+          <dt class="col-sm-4">Organizer:</dt>
+          <dd class="col-sm-8"><%= @user.organizer ? 'Yes' : 'No' %></dd>
+
+          <dt class="col-sm-4">Company Name:</dt>
+          <dd class="col-sm-8"><%= @user.company_name %></dd>
+
+          <dt class="col-sm-4">Location:</dt>
+          <dd class="col-sm-8"><%= @user.location %></dd>
+        </dl>
+        <%= simple_form_for :user, url: "/tag", method: :post do |f| %>
+          <%= f.input :interest_list, collection: User::INTERESTS, as: :check_boxes  %>
+          <%= f.submit %>
+        <% end %>
+        <% @user.interest_list.each do |tag| %>
+          <p><%= tag %></p>
+        <% end %>
+        <% if @user == current_user %>
+          <%= link_to "Edit Profile", edit_user_registration_path, class: "btn btn-primary mt-3 " %>
+        <% end %>
+      </div>
     </div>
   </div>
-</div>
