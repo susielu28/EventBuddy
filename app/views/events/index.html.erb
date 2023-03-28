@@ -51,7 +51,7 @@
 
 <% if @events.present? %>
   <div class="row">
-    <% @events.each do |event| %>
+    <% @events.select{ |event| event.date >= Date.today }.each do |event| %>
       <div class="col-md-3">
         <%= link_to event_path(event), class: "card-link" do %>
           <div class="card mb-4">
@@ -78,29 +78,25 @@
 
             <h2 class="card-title"><%= event.name %></h2>
 
-<div class="d-flex justify-content-between">
-  <span><i class="fas fa-calendar-alt"></i> <%= event.date.strftime("%d %B, %Y") %></span>
-  <span><%= number_to_currency(event.price, precision: 2, unit: "€") %> <i class="fas fa-money-bill-wave"></i></span>
-</div>
-<br>
-<p class="card-text venue"><i class="fas fa-map-marker-alt"></i>&nbsp;<%= event.venue.present? ? event.venue : "Madison Square Garden, 4 Pennsylvania Plaza, New York, NY" %></p>
+            <div class="d-flex justify-content-between">
+              <span><i class="fas fa-calendar-alt"></i> <%= event.date.strftime("%d %B, %Y") %></span>
+              <span><%= number_to_currency(event.price, precision: 2, unit: "€") %> <i class="fas fa-money-bill-wave"></i></span>
+            </div>
+            <br>
+            <p class="card-text venue"><i class="fas fa-map-marker-alt"></i>&nbsp;<%= event.venue.present? ? event.venue : "Madison Square Garden" %></p>
 
-<style>
-  .venue {
-    display: flex;
-    align-items: center;
-    justify-content: flex-start
-  }
+            <style>
+              .venue {
+                display: flex;
+                align-items: center;
+                justify-content: flex-start
+              }
 
-  .venue i {
-    margin-right: 5px;
-    align: left
-  }
-</style>
-
-
-
-
+              .venue i {
+                margin-right: 5px;
+                align: left
+              }
+          </style>
             </div>
           </div>
         <% end %>

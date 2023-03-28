@@ -6,6 +6,7 @@
     </div>
   </header>
   <aside class="page-rightbar">
+    <div class="map-box">
     <div class="content">
       <div style="width: 100%; height: 100vh;"
         data-controller="map"
@@ -13,13 +14,14 @@
         data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
       </div>
     </div>
+    </div>
   </aside>
   <main class="page-main">
     <div class="content">
       <div class="container">
         <div class="row">
           <div class="col-md-12">
-            <div class="card-event event-details">
+            <div class="col-sm-8 event-details">
               <div class="card-body-event">
                 <% if current_user == @event.user %>
                   <%= link_to "Edit", edit_event_path(@event), class: "btn btn-primary me-2" %>
@@ -40,7 +42,7 @@
                     <dd class="col-sm-8"><%= @event.date.strftime("%d %B, %Y") %></dd>
                   </dl>
                 </div>
-                <div class="col-sm-4">
+                <div class="col-sm-4 d-flex align-items-center justify-content-center">
                   <%= cl_image_tag(get_image_url(@event.genre), class: "event-photo img-fluid") %>
                 </div>
               </div>
@@ -56,7 +58,8 @@
             </div>
             <div class="card-event event-attendees">
               <div class="card-body-event">
-                <h2 class="card-title-event">Event Attendees</h2>
+              <div class="row">
+                <h2 class="card-title-event">Attendees</h2>
                 <ul class="list-group">
                   <% @event.event_members.each do |member| %>
                     <li class="list-group-item">
@@ -64,14 +67,17 @@
                     </li>
                   <% end %>
                 </ul>
+                </div>
               </div>
             </div>
           </div>
         </div>
         <div class="d-flex justify-content-between">
+        <div class="container" style="margin-right: 20px; margin-left: 10px">
           <%# <div class="card-event" style="flex: 1;"> %>
           <div class="card-event event-comments">
             <div class="card-body-event">
+             <div class="row">
               <h2 class="card-title-event">Comments</h2>
               <ul class="list-group">
                 <% @event.comments.each do |comment| %>
@@ -94,13 +100,13 @@
                 <% end %>
               </div>
             </div>
+            </div>
           </div>
         </div>
-
+        </div>
       </div>
     </div>
   </main>
-
 </div>
     <div class="mt-4">
       <%= link_to "Return", events_path, class: "btn btn-primary" %>
