@@ -1,0 +1,9 @@
+<%= link_to my_events_users_path(event), class: "card-link" do %>
+  <div class="card">
+    <div class="card-body">
+      <h2 class="card-title"><%= event.name %></h2>
+      <p class="card-text"><strong>Address:</strong> <%= event.venue %></p>
+      <p class="card-text"><strong>Category:</strong> <%= event.genre %></p>
+    </div>
+  </div>
+<% end %>

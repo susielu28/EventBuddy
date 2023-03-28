@@ -23,8 +23,19 @@ class UsersController < ApplicationController
   end
 
   def my_events
-    @events = current_user.events_attending
+    @my_events = current_user.events_attending
+
+    @my_events_markers = @my_events.map do |event|
+      {
+        lat: event.latitude,
+        lng: event.longitude,
+        info_window_html: render_to_string(partial: "info_window", locals: { event: event }),
+        marker_html: render_to_string(partial: "marker")
+      }
+    end
   end
+
+
 
   def my_chats
     chatrooms = Chatroom.where("user_1_id = ? OR user_2_id = ?", current_user.id, current_user.id)
