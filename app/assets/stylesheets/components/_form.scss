@@ -16,12 +16,20 @@
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 
-input[type="text"],
-input[type="password"],
-input[type="email"],
+input[type="text"]{
+  border-radius: 10px;
+}
+
+input[type="password"]{
+  border-radius: 10px;
+}
+
+input[type="email"]{
+  border-radius: 10px
+}
 
 input[type="number"], input[type="date"] {
-  border-radius: 5px; /* Adjust the value to your preference */
+  border-radius: 10px;
 }
 
 textarea {
