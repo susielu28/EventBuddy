@@ -15,6 +15,11 @@
   text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
   }
 
+.card-body {
+  height: 325px;
+  overflow: hidden;
+}
+
 
 .card-category:hover {
   border: 5px solid #023047;
@@ -114,3 +119,22 @@
   justify-content: space-between;
   align-items: stretch;
 }
+
+.event-date {
+  flex: 1; /* Use all remaining space */
+}
+
+.event-price {
+  text-align: right;
+}
+
+.card-text {
+  display: flex; /* Use flexbox to create a horizontal layout */
+  justify-content: space-between; /* Space the elements apart */
+}
+ .user-card {
+  display: flex; /* Use flexbox to create a horizontal layout */
+  align-items: center;
+  justify-content: space-between; /* Space the elements apart */
+  font-size: 12px
+ }

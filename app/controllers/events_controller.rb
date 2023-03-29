@@ -1,4 +1,6 @@
 class EventsController < ApplicationController
+  include EventsHelper
+
   before_action :set_event, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, except: [:index, :show]
 
@@ -6,6 +8,7 @@ class EventsController < ApplicationController
   # GET /events
   def index
     @events = Event.all
+    @events = Event.order(date: :asc)
     apply_filters if params
     @markers = @events.geocoded.map do |event|
       {
@@ -15,6 +18,11 @@ class EventsController < ApplicationController
         marker_html: render_to_string(partial: "marker")
       }
     end
+    @suggestions = []
+    current_user.interest_list.each do |interest|
+      @suggestions << Event.where(genre: interest)
+    end
+    @suggestions.flatten!
   end
 
   # GET /events/1

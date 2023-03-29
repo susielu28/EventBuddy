@@ -1,0 +1,32 @@
+.search-container {
+  max-width: 90%; /* change to your preferred width */
+  margin: 0 auto;
+}
+
+.search-container.border {
+  border: 1px solid black;
+  padding: 10px;
+}
+
+.title-container {
+  text-align: center;
+  margin-top: 20px; /* adjust the margin value as needed */
+}
+
+.row {
+  margin-top: 20px;
+  margin-right: 20px;
+  margin-left: 10px;
+}
+
+.search-form {
+  border: 1px solid #ccc;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  padding: 10px;
+}
+
+.map-box {
+  border: 1px solid #ccc;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  padding: 1px;
+}

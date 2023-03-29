@@ -1,0 +1,31 @@
+.chatroom {
+  background-color: #f7f7f7;
+  border-radius: 10px;
+  border: 2px solid #ccc;
+  padding: 10px;
+  max-width: 90vw;
+  display:flex;
+  flex-direction: column;
+  margin:50px;
+}
+
+.chatroom .message {
+  background-color: #fffcfc;
+  border-radius: 10px;
+  padding: 5px 10px;
+  margin: 5px 10px;
+
+}
+
+.chatroom .message.sender-1 {
+  background-color: #ffffff;
+}
+
+.chatroom .message.sender-2 {
+  background-color: #d9edf7;
+}
+
+.chatroom .message .timestamp {
+  font-size: 12px;
+  color: #999;
+}

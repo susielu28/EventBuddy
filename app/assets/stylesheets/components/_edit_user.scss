@@ -1,0 +1,53 @@
+.user-edit-container {
+  display: flex;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.user-edit-main {
+  width: 100%;
+  max-width: 800px;
+  background-color: #ffffff;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 2rem;
+  border-radius: 4px;
+}
+
+.form-inputs {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+
+  .form-control {
+    margin-bottom: 1rem;
+    font-size: 1rem; //
+    padding: 12px 20px;
+    height: auto;
+    width: 25rem;
+  }
+
+  .form-control-file {
+    margin-bottom: 1rem;
+  }
+
+  .form-check-input {
+    margin-bottom: 1rem;
+    margin-top: 0.25rem;
+  }
+}
+
+.form-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  .btn {
+    margin-bottom: 1rem;
+  }
+}
+
+.edit-user-title {
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid #ccc; // Adjust the color and thickness of the line as desired
+}

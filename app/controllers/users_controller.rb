@@ -8,22 +8,34 @@ class UsersController < ApplicationController
       @users = User.all
     end
   end
+
   def show
     @user = User.find(params[:id])
     @chatroom = Chatroom.where(user_1: current_user, user_2: @user).or(Chatroom.where(user_1: @user, user_2: current_user)).first
   end
+
   def tag
-    current_user.interest_list.each { |interest| current_user.interest_list.remove(interest) }
+    current_user.taggings.destroy_all
     params[:user][:interest_list].each do |tag|
-      current_user.interest_list.add(tag) unless current_user.interest_list.include?(tag)
-    end
+    current_user.interest_list.add(tag)
+  end
+
 
     current_user.save
     redirect_to user_path(current_user)
   end
 
   def my_events
-    @events = current_user.events_attending
+    @my_events = current_user.events_attending
+
+    @my_events_markers = @my_events.map do |event|
+      {
+        lat: event.latitude,
+        lng: event.longitude,
+        info_window_html: render_to_string(partial: "info_window", locals: { event: event }),
+        marker_html: render_to_string(partial: "marker")
+      }
+    end
   end
 
   def my_chats

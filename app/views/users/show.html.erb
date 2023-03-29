@@ -1,100 +1,118 @@
-<% if @user == current_user %>
-  <div class="container py-5">
-    <div class="row">
-      <div class="col-md-8">
-        <div class="card">
-          <div class="card-body">
-            <h2 class="card-title">Profile Information</h2>
-            <dl class="row">
-              <dt class="col-sm-4">First Name:</dt>
-              <dd class="col-sm-8"><%= @user.first_name %></dd>
 
-              <dt class="col-sm-4">Last Name:</dt>
-              <dd class="col-sm-8"><%= @user.last_name %></dd>
-
-              <dt class="col-sm-4">Gender:</dt>
-              <dd class="col-sm-8"><%= @user.gender %></dd>
-
-              <dt class="col-sm-4">Age:</dt>
-              <dd class="col-sm-8"><%= @user.age %></dd>
-
-              <dt class="col-sm-4">Bio:</dt>
-              <dd class="col-sm-8"><%= @user.bio %></dd>
-
-              <dt class="col-sm-4">Organizer:</dt>
-              <dd class="col-sm-8"><%= @user.organizer ? 'Yes' : 'No' %></dd>
-
-              <dt class="col-sm-4">Company Name:</dt>
-              <dd class="col-sm-8"><%= @user.company_name %></dd>
-
-              <dt class="col-sm-4">Location:</dt>
-              <dd class="col-sm-8"><%= @user.location %></dd>
-            </dl>
-          <%= simple_form_for :user, url: "/tag", method: :post do |f| %>
-              <%= f.input :interest_list, collection: User::INTERESTS, as: :check_boxes  %>
-              <%= f.submit %>
-            <% end %>
-            <% @user.interest_list.each do |tag| %>
-              <p><%= tag %></p>
-            <% end %>
-          </div>
-        </div>
-      </div>
-    <div class="col-md-4">
-      <%= link_to "Edit Profile", edit_user_registration_path, class: "btn btn-primary" %>
+<div class="profile-container">
+  <div class="profile-sidebar">
+    <% if @user == current_user %>
+      <%= link_to "Edit Profile", edit_user_registration_path, class: "profile-link" %>
+    <% else %>
+      <% if @chatroom %>
+        <%= link_to "Open Chat", chatroom_path(@chatroom), class: "profile-link" %>
+      <% else %>
+        <%= link_to "Open Chat", user_chatrooms_path(@user), data: {turbo_method: :post}, class: "profile-link" %>
+      <% end %>
+    <% end %>
+    <div class="profile-return-button-container">
+      <%= link_to "Return", :back, class: "profile-link return-button" %>
     </div>
+  </div>
+  <div class="profile-main">
+    <div class="profile-image">
+      <% if @user.photo.attached? %>
+        <%= cl_image_tag @user.photo.key, crop: :fill, class: "profile-photo" %>
+      <% else %>
+        <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png" alt="default profile picture" class="profile-photo">
+      <% end %>
+    </div>
+    <%# <h2 class="profile-title">Profile Information</h2> %>
+   <div class="profile-content">
+     <dl class="profile-info">
+       <div class="profile-info-left">
+         <dt>First Name:</dt>
+         <dd><%= @user.first_name %></dd>
+
+         <dt>Gender:</dt>
+         <dd><%= @user.gender %></dd>
+
+         <dt>Location:</dt>
+         <dd><%= @user.location %></dd>
+       </div>
+
+       <div class="profile-info-right">
+         <dt>Last Name:</dt>
+         <dd><%= @user.last_name %></dd>
+
+         <dt>Age:</dt>
+         <dd><%= @user.age %></dd>
+
+         <dt>Organizer:</dt>
+         <dd><%= @user.organizer ? 'Yes' : 'No' %></dd>
+       </div>
+     </dl>
+
+     <div class="profile-bio">
+       <dt>Bio:</dt>
+       <dd><%= @user.bio %></dd>
+     </div>
+   </div>
+
+    <% if @user == current_user %>
+    <div class="interest-list">
+      <%= simple_form_for :user, url: "/tag", method: :post do |f| %>
+        <%= f.input :interest_list, collection: User::INTERESTS, as: :check_boxes,
+                    input_html: { class: "tag-selector" },
+                    item_wrapper_class: 'tag-item' %>
+        <%= f.submit class: "profile-submit" %>
+      <% end %>
+    </div>
+    <% else %>
+    <div class="profile-tags">
+      <dt>Interests:</dt>
+      <dl class="profile-interest-info">
+        <% @user.interest_list.each do |tag| %>
+        <dd class= 'pill'><%= tag %></dd>
+      <% end %>
+    </div>
+    <% end %>
   </div>
 </div>
-<% else %>
-  <div class="container py-5">
+
+<div class="profile-container">
+  <div class="user-attended-events">
+    <h2 class="edit-user-title">Events <%= @user.first_name %> is attending:</h2>
     <div class="row">
-      <div class="col-md-8">
-        <div class="card">
-          <div class="card-body">
-            <h2 class="card-title">Profile Information</h2>
-            <dl class="row">
-              <dt class="col-sm-4">First Name:</dt>
-              <dd class="col-sm-8"><%= @user.first_name %></dd>
-
-              <dt class="col-sm-4">Last Name:</dt>
-              <dd class="col-sm-8"><%= @user.last_name %></dd>
-
-              <dt class="col-sm-4">Gender:</dt>
-              <dd class="col-sm-8"><%= @user.gender %></dd>
-
-              <dt class="col-sm-4">Age:</dt>
-              <dd class="col-sm-8"><%= @user.age %></dd>
-
-              <dt class="col-sm-4">Bio:</dt>
-              <dd class="col-sm-8"><%= @user.bio %></dd>
-
-              <dt class="col-sm-4">Organizer:</dt>
-              <dd class="col-sm-8"><%= @user.organizer ? 'Yes' : 'No' %></dd>
-
-              <dt class="col-sm-4">Company Name:</dt>
-              <dd class="col-sm-8"><%= @user.company_name %></dd>
-
-              <dt class="col-sm-4">Location:</dt>
-              <dd class="col-sm-8"><%= @user.location %></dd>
-            </dl>
-          </div>
+      <% @user.events.each do |event| %>
+        <div class="col-md-4">
+          <%= link_to event_path(event), class: "card-link" do %>
+            <div class="card mb-4 shadow-effect">
+              <% if event.genre == 'conferences' %>
+                <%= image_tag "https://res.cloudinary.com/dqfn0qd93/image/upload/v1679924660/event-buddy/conferences_zcopuh.jpg", height: 200, crop: :fill, class: "card-img-top" %>
+                <% elsif event.genre == 'expos' %>
+                  <%= image_tag "https://res.cloudinary.com/dqfn0qd93/image/upload/v1679924660/event-buddy/expos_b5yetg.jpg", height: 200, crop: :fill, class: "card-img-top" %>
+                <% elsif event.genre == 'community' %>
+                  <%= image_tag "https://res.cloudinary.com/dqfn0qd93/image/upload/v1679924658/event-buddy/community_pefhrk.jpg", height: 200, crop: :fill, class: "card-img-top" %>
+                <% elsif event.genre == 'performing-arts' %>
+                  <%= image_tag "https://res.cloudinary.com/dqfn0qd93/image/upload/v1679924656/event-buddy/performing-arts_dpsrgu.jpg", height: 200, crop: :fill, class: "card-img-top" %>
+                <% elsif event.genre == 'concerts' %>
+                  <%= image_tag "https://res.cloudinary.com/dqfn0qd93/image/upload/v1679924655/event-buddy/concerts_nmxcei.jpg", height: 200, crop: :fill, class: "card-img-top" %>
+                <% elsif event.genre == 'festivals' %>
+                  <%= image_tag "https://res.cloudinary.com/dqfn0qd93/image/upload/v1679924653/event-buddy/festivals_cxugfs.jpg", height: 200, crop: :fill, class: "card-img-top" %>
+                <% elsif event.genre == 'sports' %>
+                  <%= image_tag "https://res.cloudinary.com/dqfn0qd93/image/upload/v1679924652/event-buddy/sports_riuh1m.jpg", height: 200, crop: :fill, class: "card-img-top" %>
+                <% elsif event.photo.attached? %>
+                  <%= cl_image_tag event.photo.key, height: 150, crop: :fill, class: "card-img-top" %>
+                <% else %>
+                  <img src="https://upload.wikimedia.org/wikipedia/commons/0/0b/SFOperaHouse2_%288189967420%29.jpg" alt="default event picture" class="card-img-top">
+              <% end %>
+              <div class="card-body">
+                <h2 class="card-title"><%= event.name %></h2>
+                <p class="card-text">
+                  <span class="mr-2"><i class="fas fa-calendar-alt"></i> <%= event.date.strftime('%B %d, %Y') %></span>
+                  <span class="mr-2"><i class="fas fa-map-marker-alt"></i> <%= event.venue %></span>
+                </p>
+              </div>
+            </div>
+          <% end %>
         </div>
-      </div>
-    </div>
-  </div>
-<% end %>
-
-<div class="container mt-4">
-  <div class="row">
-    <div class="col">
-      <%= link_to "Return", :back, class: "btn btn-primary" %>
-    </div>
-    <div class="col">
-    <% if @chatroom %>
-      <%= link_to "Open Chat", chatroom_path(@chatroom), class: "btn btn-primary" %>
-      <% else %>
-      <%= link_to "Open Chat", user_chatrooms_path(@user), data: {turbo_method: :post}, class: "btn btn-primary" %>
-    <% end %>
+      <% end %>
     </div>
   </div>
 </div>
