@@ -13,12 +13,13 @@
                   placeholder: "Find an Event"
                 %>
                 <%= submit_tag "Search", class: "btn btn-primary" %>
+                <%= submit_tag "All Events", class: "btn btn-primary" %>
               <% end %>
             </div>
           </div>
         </div>
 
-        <h2 class="text-light">Find a buddy, attend an event.</h2>
+        <h2 class="text-light">Events are better with friends!</h2>
       </div>
       <%# <div class="jumbotron text-center">
           <p>NEEDS DETAILS</p>
@@ -27,69 +28,167 @@
     </div>
   </div>
   <!-- code a "How it works" section -->
-  <div class="container">
-    <h2 class="text-center how-it-works-heading"></h2>
+  <div>
+    <div class="container">
+      <h2 class="text-center how-it-works-heading"></h2>
+    </div>
+    <div class="main-info">
+      <div class="cards">
+        <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://cloudfront-us-east-2.images.arcpublishing.com/reuters/JO6NKXGTVFK4FHDEIFSBYUTUB4.jpg">
+          Sporting Events in Lisbon
+        </div>
+
+        <a href="/events?query=&name=&venue=london&genre=concerts" class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://media.timeout.com/images/105948176/750/562/image.jpg">
+          Concerts in London
+        </a>
+
+        <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://www.one4all.ie/media/wysiwyg/f/e/feature_2.jpg">
+          <a href="events?query=&name=&venue=berlin&genre=festivals" style="color: white">Festivals in Berlin</a>
+        </div>
+      </div>
+    </div>
   </div>
-  <div class="main-info">
-  <div class="cards">
-    <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://cloudfront-us-east-2.images.arcpublishing.com/reuters/JO6NKXGTVFK4FHDEIFSBYUTUB4.jpg">
-      Sporting Events in Lisbon
-    </div>
-
-    <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://media.timeout.com/images/105948176/750/562/image.jpg">
-      Concerts in London
-    </div>
-
-    <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://www.one4all.ie/media/wysiwyg/f/e/feature_2.jpg">
-      Festivals in Berlin
-    </div>
-  </div>
-
   <br>
 
   <h2 class="font-weight-bold">How EventBuddy Works</h2>
 
   <br>
-  <div class="cards-circle">
-    <div class="card-circle" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.pexels.com/photos/1190297/pexels-photo-1190297.jpeg?cs=srgb&dl=pexels-wendy-wei-1190297.jpg&fm=jpg">
-      Choose an Event
-    </div>
 
-    <div class="card-circle" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://img.lemde.fr/2022/11/28/190/0/1900/1266/1440/960/60/0/dcfd1d3_1669643680595-1998-06-21t120000z-610734464-rp1drigdogac-rtrmadp-3-nodesc.JPG">
-      <div>
-        Find a Buddy
+  <div class="cards-works">
+    <div class="card-work">
+      <div class="card-circle" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.pexels.com/photos/1190297/pexels-photo-1190297.jpeg?cs=srgb&dl=pexels-wendy-wei-1190297.jpg&fm=jpg">
+      </div>
+      <div class="card-body">
+      <h5 class="card-title-works">Choose an Event</h5>
+      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
       </div>
     </div>
 
-    <div class="card-circle" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://media.istockphoto.com/id/1126207231/photo/having-the-time-of-their-lives.jpg?s=612x612&w=0&k=20&c=Ukz-hSQx9OiGFNKF8lycAdO0zWeJB1cFcbTlDjgIt9M=">
-      Join a Group
+    <div class="card-work">
+      <div class="card-circle" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://img.lemde.fr/2022/11/28/190/0/1900/1266/1440/960/60/0/dcfd1d3_1669643680595-1998-06-21t120000z-610734464-rp1drigdogac-rtrmadp-3-nodesc.JPG">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title-works">Find a Buddy</h5>
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+      </div>
+    </div>
+
+    <div class="card-work">
+      <div class="card-circle" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://media.istockphoto.com/id/1126207231/photo/having-the-time-of-their-lives.jpg?s=612x612&w=0&k=20&c=Ukz-hSQx9OiGFNKF8lycAdO0zWeJB1cFcbTlDjgIt9M=">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title-works">Join a Group</h5>
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+      </div>
     </div>
   </div>
+
   <br>
-  <h2 class="font-weight-bold">Upcoming Events</h2>
+
+  <div class="upcoming-title">
+  <h2 class="font-weight-bold"><strong>Upcoming Events</strong></h2>
+  </div>
+
   <br>
 
   <div class="cards">
 
-    <%= link_to "events/5499" do %>
+    <%= link_to event_path(@elton) do %>
     <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://media.timeout.com/images/105560223/750/422/image.jpg">
     Elton John in London
     </div>
     <% end %>
 
-    <%= link_to "events/5520" do %>
+    <%= link_to event_path(@brighton) do %>
     <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://cdne-totv8-prod-westeurope.azureedge.net/media/34057/the-stadium.jpg">
     Tottenham vs Brighton
     </div>
     <% end %>
 
-    <%= link_to "events/5415" do %>
+    <%= link_to event_path(@rockofages) do %>
     <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://www.broadwayworld.com/ezoimgfmt/cloudimages.broadwayworld.com/upload13/2120499/tn-500_img_2703.jpg?ezimgfmt=rs:387x265/rscb35/ngcb35/notWebP">
     Rock of Ages in Berlin
     </div>
     <% end %>
-    </div>
   </div>
+
+  <br>
+
+  <div class="reviews-title">
+  <h2 class="font-weight-bold">Reviews from Buddies!</h2>
+  </div>
+
+  <br>
+
+
+  <div id="carouselExampleControls" class="carousel carousel-dark slide" <%# data-bs-ride="carousel" %>>
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <div class="cards-wrapper">
+          <div class="card-carousel">
+            <div class="image-wrapper" style="background-image: url(https://avatars.githubusercontent.com/u/68972820?v=4)">
+            </div>
+            <div class="card-body">
+              <h5 class="card-title-ta">Jess</h5>
+              <p class="card-text">"Amazing website! I've just found out that Ed Sheeran is coming to London for two concerts!"</p>
+            </div>
+          </div>
+          <div class="card-carousel">
+            <div class="image-wrapper" style="background-image: url(https://avatars.githubusercontent.com/u/34521157?v=4)">
+            </div>
+            <div class="card-body">
+              <h5 class="card-title-ta">George</h5>
+              <p class="card-text">"Awesome show in Melbourne! Ziggy Alberts with a new group of friends! Cheers!"</p>
+            </div>
+          </div>
+          <div class="card-carousel">
+            <div class="image-wrapper" style="background-image: url(https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/v1670964687/i9v59naxnf3pekekvqkk.jpg)">
+            </div>
+            <div class="card-body">
+              <h5 class="card-title-ta">Camila</h5>
+              <p class="card-text">"That's what I call a great app! I just met some buddies to go watch some shows in Barcelona!"</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <div class="cards-wrapper">
+          <div class="card-carousel">
+            <div class="image-wrapper" style="background-image: url(https://avatars.githubusercontent.com/u/80218755?v=4)">
+            </div>
+            <div class="card-body">
+              <h5 class="card-title-ta">André</h5>
+              <p class="card-text">"I found the best Flamengo fans to accompany me to the matches in Rio de Janeiro! Lets go!"</p>
+            </div>
+          </div>
+          <div class="card-carousel">
+            <div class="image-wrapper" style="background-image: url(https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/v1642147202/rtauckuyhc852xd8vvyr.jpg)">
+            </div>
+            <div class="card-body">
+              <h5 class="card-title-ta">Bárbara</h5>
+              <p class="card-text">"This is so cool! I met a nice group from Berlin to go with me to Oktoberfest! Lets grab some beers!"</p>
+            </div>
+          </div>
+          <div class="card-carousel">
+            <div class="image-wrapper" style="background-image: url(https://avatars.githubusercontent.com/u/26385065?v=4)">
+            </div>
+            <div class="card-body">
+              <h5 class="card-title-ta">Arbi</h5>
+              <p class="card-text">"Incredible! I just watched Juventus win the Champions League with a great group of buddies!"</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
   </div>
 
   <% if @events.present? %>
@@ -116,5 +215,4 @@
       <% end %>
     </div>
   <% end %>
-
 </div>

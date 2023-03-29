@@ -3,7 +3,6 @@
   display: flex;
   justify-content: space-between; /* This will evenly distribute the cards horizontally */
   align-items: center; /* This will center the cards vertically */
-
 }
 
 .upcoming-events {
@@ -19,13 +18,31 @@
   background-color: #c8d6dd;
  }
 
-.cards-circle {
+.card-circle {
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
   align-content: center;
   justify-content: space-around;
   align-items: center;
+}
+
+.reviews-title {
+  text-align: center;
+  padding-top: 30px;
+  padding-bottom: 20px;
+  font-size: larger;
+  color: #023047;
+  text-shadow: #8ECAE6;
+}
+
+.upcoming-title {
+  padding-top: 60px;
+  padding-bottom: 5px;
+  padding-left: 100px;
+  font-size: larger;
+  color: #023047;
+  text-shadow: #8ECAE6;
 }
 
 .cards {
@@ -45,18 +62,18 @@
   border-radius: 50%;
   background-size:cover;
   background-position: center;
-  height: 250px;
-  width: 250px;
+  height: 200px;
+  width: 300px;
   display: center;
   justify-content: center;
   align-items: center;
-  color: white;
+ /*  color: white;
   font-size: 24px;
   font-weight: bold;
   // text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   background-color: white;
-  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000; */
 }
 
 
