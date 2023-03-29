@@ -1,6 +1,6 @@
 class ProfilesController < ApplicationController
-  def shdev   @user = User.find(params[:id])
-  end
+  # def shdev @user = User.find(params[:id])
+  # end
 
   def edit
     @user = User.find(params[:id])

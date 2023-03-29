@@ -114,9 +114,9 @@
 <% if @events.present? %>
   <div class="row">
     <% @events.select{ |event| event.date >= Date.today }.each do |event| %>
-      <div class="col-md-3">
+      <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
         <%= link_to event_path(event), class: "card-link" do %>
-          <div class="card mb-4">
+          <div class="card">
             <% if event.genre == 'conferences' %>
             <%= image_tag "https://res.cloudinary.com/dqfn0qd93/image/upload/v1679924660/event-buddy/conferences_zcopuh.jpg", height: 200, crop: :fill, class: "card-img-top" %>
             <% elsif event.genre == 'expos' %>

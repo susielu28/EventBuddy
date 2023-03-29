@@ -72,3 +72,9 @@
   display: flex; /* Use flexbox to create a horizontal layout */
   justify-content: space-between; /* Space the elements apart */
 }
+ .user-card {
+  display: flex; /* Use flexbox to create a horizontal layout */
+  align-items: center;
+  justify-content: space-between; /* Space the elements apart */
+  font-size: 12px
+ }
