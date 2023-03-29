@@ -14,19 +14,19 @@
         <%= link_to event_path(event), class: "card-link" do %>
           <div class="card mb-4 shadow-effect">
             <% if event.genre == 'conferences' %>
-              <%= cl_image_tag "https://res.cloudinary.com/dqfn0qd93/image/upload/v1679924660/event-buddy/conferences_zcopuh.jpg", height: 200, crop: :fill, class: "card-img-top" %>
+              <%= image_tag "https://res.cloudinary.com/dqfn0qd93/image/upload/v1679924660/event-buddy/conferences_zcopuh.jpg", height: 200, crop: :fill, class: "card-img-top" %>
               <% elsif event.genre == 'expos' %>
-                <%= cl_image_tag "https://res.cloudinary.com/dqfn0qd93/image/upload/v1679924660/event-buddy/expos_b5yetg.jpg", height: 200, crop: :fill, class: "card-img-top" %>
+                <%= image_tag "https://res.cloudinary.com/dqfn0qd93/image/upload/v1679924660/event-buddy/expos_b5yetg.jpg", height: 200, crop: :fill, class: "card-img-top" %>
               <% elsif event.genre == 'community' %>
-                <%= cl_image_tag "https://res.cloudinary.com/dqfn0qd93/image/upload/v1679924658/event-buddy/community_pefhrk.jpg", height: 200, crop: :fill, class: "card-img-top" %>
+                <%= image_tag "https://res.cloudinary.com/dqfn0qd93/image/upload/v1679924658/event-buddy/community_pefhrk.jpg", height: 200, crop: :fill, class: "card-img-top" %>
               <% elsif event.genre == 'performing-arts' %>
-                <%= cl_image_tag "https://res.cloudinary.com/dqfn0qd93/image/upload/v1679924656/event-buddy/performing-arts_dpsrgu.jpg", height: 200, crop: :fill, class: "card-img-top" %>
+                <%= image_tag "https://res.cloudinary.com/dqfn0qd93/image/upload/v1679924656/event-buddy/performing-arts_dpsrgu.jpg", height: 200, crop: :fill, class: "card-img-top" %>
               <% elsif event.genre == 'concerts' %>
-                <%= cl_image_tag "https://res.cloudinary.com/dqfn0qd93/image/upload/v1679924655/event-buddy/concerts_nmxcei.jpg", height: 200, crop: :fill, class: "card-img-top" %>
+                <%= image_tag "https://res.cloudinary.com/dqfn0qd93/image/upload/v1679924655/event-buddy/concerts_nmxcei.jpg", height: 200, crop: :fill, class: "card-img-top" %>
               <% elsif event.genre == 'festivals' %>
-                <%= cl_image_tag "https://res.cloudinary.com/dqfn0qd93/image/upload/v1679924653/event-buddy/festivals_cxugfs.jpg", height: 200, crop: :fill, class: "card-img-top" %>
+                <%= image_tag "https://res.cloudinary.com/dqfn0qd93/image/upload/v1679924653/event-buddy/festivals_cxugfs.jpg", height: 200, crop: :fill, class: "card-img-top" %>
               <% elsif event.genre == 'sports' %>
-                <%= cl_image_tag "https://res.cloudinary.com/dqfn0qd93/image/upload/v1679924652/event-buddy/sports_riuh1m.jpg", height: 200, crop: :fill, class: "card-img-top" %>
+                <%= image_tag "https://res.cloudinary.com/dqfn0qd93/image/upload/v1679924652/event-buddy/sports_riuh1m.jpg", height: 200, crop: :fill, class: "card-img-top" %>
               <% elsif event.photo.attached? %>
                 <%= cl_image_tag event.photo.key, height: 150, crop: :fill, class: "card-img-top" %>
               <% else %>
