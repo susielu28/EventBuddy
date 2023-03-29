@@ -8,15 +8,18 @@ class UsersController < ApplicationController
       @users = User.all
     end
   end
+
   def show
     @user = User.find(params[:id])
     @chatroom = Chatroom.where(user_1: current_user, user_2: @user).or(Chatroom.where(user_1: @user, user_2: current_user)).first
   end
+
   def tag
-    current_user.interest_list.each { |interest| current_user.interest_list.remove(interest) }
+    current_user.taggings.destroy_all
     params[:user][:interest_list].each do |tag|
-      current_user.interest_list.add(tag) unless current_user.interest_list.include?(tag)
-    end
+    current_user.interest_list.add(tag)
+  end
+
 
     current_user.save
     redirect_to user_path(current_user)
@@ -34,8 +37,6 @@ class UsersController < ApplicationController
       }
     end
   end
-
-
 
   def my_chats
     chatrooms = Chatroom.where("user_1_id = ? OR user_2_id = ?", current_user.id, current_user.id)

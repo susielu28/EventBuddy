@@ -18,6 +18,11 @@ class EventsController < ApplicationController
         marker_html: render_to_string(partial: "marker")
       }
     end
+    @suggestions = []
+    current_user.interest_list.each do |interest|
+      @suggestions << Event.where(genre: interest)
+    end
+    @suggestions.flatten!
   end
 
   # GET /events/1
