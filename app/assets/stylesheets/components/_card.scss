@@ -16,7 +16,7 @@
   }
 
 .card-body {
-  height: 100px;
+  height: 200px;
   overflow: hidden;
 }
 
@@ -87,6 +87,9 @@
 .card-work {
   padding-left: 30px;
   padding-right: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 
