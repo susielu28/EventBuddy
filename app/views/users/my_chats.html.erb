@@ -1,22 +1,26 @@
-<h1>My Chats</h1>
+<h1 class="text-center mb-4 chat-heading">My Chats</h1>
 
-<div class="container">
+<div class="container chat-container">
   <div class="row">
     <div class="col-md-12">
-      <ul class="list-group">
-        <% @chatrooms.each do |chatroom| %>
-          <li class="list-group-item">
-            <% other_user = chatroom.user_1 == current_user ? chatroom.user_2 : chatroom.user_1 %>
-            <%= link_to "#{other_user.first_name} #{other_user.last_name}", chatroom_path(chatroom) %>
-            <% last_message = chatroom.messages.order(created_at: :desc).first %>
-            <% if last_message %>
-              <small class="text-muted"> - Last message: <%= last_message.created_at.strftime("%a %b %e at %l:%M %p") %></small>
-            <% else %>
-              <small class="text-muted"> - No messages yet</small>
+      <div class="card chat-card"> <!-- Add a new div with the class "card" -->
+        <div class="card-body"> <!-- Add a new div with the class "card-body" -->
+          <ul class="list-group chat-list-group">
+            <% @chatrooms.each do |chatroom| %>
+              <li class="list-group-item chat-list-item d-flex justify-content-between align-items-center">
+                <% other_user = chatroom.user_1 == current_user ? chatroom.user_2 : chatroom.user_1 %>
+                <%= link_to "#{other_user.first_name} #{other_user.last_name}", chatroom_path(chatroom), class: "font-weight-bold chat-user-link" %>
+                <% last_message = chatroom.messages.order(created_at: :desc).first %>
+                <% if last_message %>
+                  <small class="text-muted chat-last-message">Last message: <%= last_message.created_at.strftime("%a %b %e at %l:%M %p") %></small>
+                <% else %>
+                  <small class="text-muted chat-no-messages">No messages yet</small>
+                <% end %>
+              </li>
             <% end %>
-          </li>
-        <% end %>
-      </ul>
+          </ul>
+        </div>
+      </div>
     </div>
   </div>
 </div>

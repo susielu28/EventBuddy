@@ -29,3 +29,36 @@
   font-size: 12px;
   color: #999;
 }
+
+.chat-heading {
+  font-size: 2rem;
+}
+
+.chat-container {
+  margin-top: 2rem;
+}
+
+.chat-list-group {
+  margin-top: 1rem;
+}
+
+.chat-list-item {
+  background-color: #f8f9fa;
+  border: 1px solid #dee2e6;
+  margin-bottom: 0.5rem;
+  border-radius: 0.25rem;
+  padding: 1rem;
+}
+
+.chat-user-link {
+  font-size: 1.25rem;
+}
+
+.chat-last-message,
+.chat-no-messages {
+  font-size: 0.9rem;
+}
+
+.chat-card {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.1);
+}

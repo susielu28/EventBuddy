@@ -53,6 +53,248 @@ user.photo.attach(io: file, filename: "Gary.png", content_type: "image/png")
 user.interest_list.add("community", "performing-arts", "concerts", "festivals", "sports")
 user.save
 
+file = URI.open("https://image.gala.de/22405426/t/xA/v2/w960/r0.6667/-/emma-watson.jpg")
+user = User.new(
+    first_name: 'Emma',
+    last_name: 'Watson',
+    email: 'emma.watson@example.com',
+    gender: 'female',
+    age: 32,
+    bio: 'I am an actress who enjoys outdoor activities and social events.',
+    organizer: false,
+    location: 'London',
+    password: '123456'
+)
+user.photo.attach(io: file, filename: "Emma.png", content_type: "image/png")
+user.interest_list.add("conferences", "expos", "community", "performing-arts", "concerts", "festivals", "sports")
+user.save
+
+file = URI.open("https://images.t-online.de/2023/02/2zOo5YJ9npjS/392x333:2351x1763/fit-in/1800x0/tom-hanks-der-schauspieler-zeigt-sich-in-seinem-neuen-film-von-einer-ungewohnten-seite.jpg")
+user = User.new(
+    first_name: 'Tom',
+    last_name: 'Hanks',
+    email: 'tom.hanks@example.com',
+    gender: 'male',
+    age: 66,
+    bio: 'I am an actor who loves to attend film festivals and concerts.',
+    organizer: false,
+    location: 'Los Angeles',
+    password: '123456'
+)
+user.photo.attach(io: file, filename: "Tom.png", content_type: "image/png")
+user.interest_list.add("community", "performing-arts", "concerts", "festivals", "sports")
+user.save
+
+file = URI.open("https://www.stylebook.de/data/uploads/2021/07/gettyimages-1315940370-1040x690.jpg")
+user4 = User.new(
+    first_name: 'Jennifer',
+    last_name: 'Lopez',
+    email: 'jennifer.lopez@example.com',
+    gender: 'female',
+    age: 54,
+    bio: 'I am a singer and actress who enjoys attending cultural events and art exhibitions.',
+    organizer: true,
+    location: 'New York City',
+    password: '123456'
+)
+user.photo.attach(io: file, filename: "Jennifer.png", content_type: "image/png")
+user.interest_list.add("community", "performing-arts", "concerts", "festivals", "sports")
+user.save
+
+file = URI.open("https://image.gala.de/20487112/t/oZ/v19/w960/r0.6667/-/robert-downey-junior-ge--6278850-.jpg")
+user = User.new(
+    first_name: 'Robert',
+    last_name: 'Downey Jr.',
+    email: 'robert.downey@example.com',
+    gender: 'male',
+    age: 57,
+    bio: 'I am an actor who loves attending sports events and charity gatherings.',
+    organizer: false,
+    location: 'Los Angeles',
+    password: '123456'
+)
+user.photo.attach(io: file, filename: "Robert.png", content_type: "image/png")
+user.interest_list.add("community", "performing-arts", "concerts", "festivals")
+user.save
+
+file = URI.open("https://i0.web.de/image/792/36015792,pd=1/scarlett-johansson.jpg")
+user = User.new(
+    first_name: 'Scarlett',
+    last_name: 'Johansson',
+    email: 'scarlett.johansson@example.com',
+    gender: 'female',
+    age: 38,
+    bio: 'I am an actress who enjoys attending theater performances and cultural events.',
+    organizer: true,
+    location: 'New York City',
+    password: '123456'
+)
+user.photo.attach(io: file, filename: "Scarlett.png", content_type: "image/png")
+user.interest_list.add("community", "performing-arts", "concerts", "festivals")
+user.save
+
+file = URI.open("https://images.mubicdn.net/images/cast_member/2552/cache-207-1524922850/image-w856.jpg?size=800x")
+user = User.new(
+    first_name: 'Brad',
+    last_name: 'Pitt',
+    email: 'brad.pitt@example.com',
+    gender: 'male',
+    age: 59,
+    bio: 'I am an actor who enjoys attending conferences, expos, and community events.',
+    organizer: true,
+    location: 'Los Angeles',
+    password: '123456'
+)
+user.photo.attach(io: file, filename: "Brad.png", content_type: "image/png")
+user.interest_list.add("conferences", "expos", "community", "performing-arts", "concerts", "festivals", "sports")
+user.save
+
+file = URI.open("https://image.gala.de/22872896/t/X2/v6/w1440/r1/-/natalie-portman.jpg")
+user = User.new(
+    first_name: 'Natalie',
+    last_name: 'Portman',
+    email: 'natalie.portman@example.com',
+    gender: 'female',
+    age: 41,
+    bio: 'I am an actress who loves attending performing arts, concerts, and sports events.',
+    organizer: false,
+    location: 'New York City',
+    password: '123456'
+)
+user.photo.attach(io: file, filename: "Natalie.png", content_type: "image/png")
+user.interest_list.add("community", "performing-arts", "concerts", "festivals")
+user.save
+
+file = URI.open("https://i0.web.de/image/184/36589184,pd=1/leonardo-dicaprio.jpg")
+user = User.new(
+    first_name: 'Leonardo',
+    last_name: 'DiCaprio',
+    email: 'leonardo.dicaprio@example.com',
+    gender: 'male',
+    age: 48,
+    bio: 'I am an actor and environmentalist who enjoys attending conferences, expos, and community events.',
+    organizer: true,
+    location: 'Los Angeles',
+    password: '123456'
+)
+user.photo.attach(io: file, filename: "Leonardo.png", content_type: "image/png")
+user.interest_list.add("conferences", "expos", "community", "performing-arts", "concerts", "festivals", "sports")
+user.save
+
+file = URI.open("https://images.mubicdn.net/images/cast_member/37421/cache-2769-1509599744/image-w856.jpg?size=800x")
+user = User.new(
+    first_name: 'Beyonce',
+    last_name: 'Knowles',
+    email: 'beyonce.knowles@example.com',
+    gender: 'female',
+    age: 41,
+    bio: 'I am a singer and performer who loves attending concerts, festivals, and sports events.',
+    organizer: false,
+    location: 'New York City',
+    password: '123456'
+)
+user.photo.attach(io: file, filename: "Beyonce.png", content_type: "image/png")
+user.interest_list.add("performing-arts", "concerts", "festivals")
+user.save
+
+file = URI.open("https://assets.glamour.de/photos/62e0fb13ca63b0531d1baf12/3:4/w_675,h_900,c_limit/Alicia-Vikander-Fehlgeburt.jpg")
+user = User.new(
+    first_name: 'Ryan',
+    last_name: 'Reynolds',
+    email: 'ryan.reynolds@example.com',
+    gender: 'male',
+    age: 46,
+    bio: 'I am an actor who enjoys attending expos, community events, and performing arts.',
+    organizer: true,
+    location: 'Vancouver',
+    password: '123456'
+)
+user.photo.attach(io: file, filename: "Ryan.png", content_type: "image/png")
+user.interest_list.add("conferences", "expos", "community", "performing-arts", "sports")
+user.save
+
+file = URI.open("https://upload.wikimedia.org/wikipedia/commons/8/89/Sophie_Turner03.jpg")
+user = User.new(
+    first_name: 'Sophie',
+    last_name: 'Turner',
+    email: 'sophie.turner@example.com',
+    gender: 'female',
+    age: 27,
+    bio: 'I am an actress who enjoys attending concerts, festivals, and sports events.',
+    organizer: false,
+    location: 'London',
+    password: '123456'
+)
+user.photo.attach(io: file, filename: "Sophie.png", content_type: "image/png")
+user.interest_list.add("concerts", "festivals", "sports")
+user.save
+
+file = URI.open("https://images.mubicdn.net/images/cast_member/499823/cache-587716-1600297708/image-w856.jpg")
+user = User.new(
+    first_name: 'Tom',
+    last_name: 'Holland',
+    email: 'tom.holland@example.com',
+    gender: 'male',
+    age: 26,
+    bio: 'I am an actor who loves attending conferences, expos, and community events.',
+    organizer: true,
+    location: 'London',
+    password: '123456'
+)
+user.photo.attach(io: file, filename: "TomH.png", content_type: "image/png")
+user.interest_list.add("community", "performing-arts", "concerts", "festivals", "sports")
+user.save
+
+file = URI.open("https://media.vogue.de/photos/6320191efd4815073217155a/master/pass/1423201648")
+user = User.new(
+    first_name: 'Zendaya',
+    last_name: 'Coleman',
+    email: 'zendaya.coleman@example.com',
+    gender: 'female',
+    age: 26,
+    bio: 'I am an actress and singer who enjoys attending concerts, festivals, and performing arts events.',
+    organizer: false,
+    location: 'Los Angeles',
+    password: '123456'
+)
+user.photo.attach(io: file, filename: "Zendaya.png", content_type: "image/png")
+user.interest_list.add("conferences", "expos", "community", "performing-arts", "concerts", "festivals", "sports")
+user.save
+
+file = URI.open("https://cdn.prod.www.spiegel.de/images/043d8e98-6163-4ce9-9eba-bb7ad1430e3e_w1600_r1.5_fpx47.33_fpy45.jpg")
+user = User.new(
+    first_name: 'Michael',
+    last_name: 'Jordan',
+    email: 'michael.jordan@example.com',
+    gender: 'male',
+    age: 35,
+    bio: 'I am an entrepreneur who loves attending conferences, expos, and community events.',
+    organizer: true,
+    location: 'New York City',
+    password: '123456'
+)
+user.photo.attach(io: file, filename: "Michael.png", content_type: "image/png")
+user.interest_list.add("conferences", "expos", "community", "performing-arts", "concerts", "festivals", "sports")
+user.save
+
+file = URI.open("https://assets.glamour.de/photos/62e0fb13ca63b0531d1baf12/3:4/w_675,h_900,c_limit/Alicia-Vikander-Fehlgeburt.jpg")
+user = User.new(
+    first_name: 'Alicia',
+    last_name: 'Vikander',
+    email: 'alicia.vikander@example.com',
+    gender: 'female',
+    age: 34,
+    bio: 'I am an actress who enjoys attending cultural events, art exhibitions, and performing arts.',
+    organizer: false,
+    location: 'Stockholm',
+    password: '123456'
+)
+user.photo.attach(io: file, filename: "Alicia.png", content_type: "image/png")
+user.interest_list.add("conferences", "expos", "community", "performing-arts", "concerts", "festivals", "sports")
+user.save
+
+
+
 file = URI.open("https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3387&q=80")
 user = User.new(
     first_name: 'Olivia',
@@ -375,7 +617,7 @@ user.save
 
 Event.destroy_all
 
-event_coordinates = ["52.520008,13.404954", "51.509865,-0.118092"]
+event_coordinates = ["52.520008,13.404954", "51.509865,-0.118092", "38.736946,-9.142685", "40.730610,-73.935242","-33.865143,151.209900"]
 event_coordinates.each do |coordinate|
 event_categories = ["conferences", "expos", "community", "performing-arts", "concerts", "festivals", "sports"]
 event_categories.each do |category|
