@@ -55,7 +55,7 @@
       <h2 class="edit-user-title">Your Suggestions</h2>
     </div>
     <div class="row">
-      <% @suggestions.sample(4).each do |event| %>
+      <% @suggestions.sample(8).each do |event| %>
         <div class="col-md-3">
           <%= link_to event_path(event), class: "card-link" do %>
             <div class="card mb-4">
