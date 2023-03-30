@@ -16,7 +16,12 @@
   }
 
 .card-body {
-  height: 325px;
+  height: 100px;
+  overflow: hidden;
+}
+
+.card-body-works {
+  height: auto;
   overflow: hidden;
 }
 
@@ -40,16 +45,9 @@
   background-position: center;
   height: 200px;
   width: 300px;
-  /* display: flex; */
+  display: center;
   justify-content: center;
   align-items: center;
-  color: white;
-  font-size: 24px;
-  font-weight: bold;
-  // text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
-  box-shadow: 0 0 15px rgba(0,0,0,0.2);
-  background-color: white;
-  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
 }
 
 .card-title-works {
@@ -60,6 +58,13 @@
   /* text-shadow: 1px 1px 3px rgba(0,0,0,0.2); */
   background-color: #c8d6dd;
   /* text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000; */
+  text-align: center;
+}
+
+.card-text-works {
+  display: flex; /* Use flexbox to create a horizontal layout */
+  justify-content: space-between; /* Space the elements apart */
+  text-align: center;
 }
 
 .cards-wrapper {
@@ -75,6 +80,8 @@
 .cards-works {
   display: flex;
   flex-direction: row;
+  padding-left: 100px;
+  padding-right: 100px;
 }
 
 .card-work {
@@ -89,7 +96,7 @@
   grid-template-columns: 1fr 1fr;
   grid-gap: 10px;
   height: 300;
-  align-items: center;
+  align-items: start;
 }
 
 /* .image-wrapper {
