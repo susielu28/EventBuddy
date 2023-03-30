@@ -86,7 +86,7 @@ user.interest_list.add("community", "performing-arts", "concerts", "festivals", 
 user.save
 
 file = URI.open("https://www.stylebook.de/data/uploads/2021/07/gettyimages-1315940370-1040x690.jpg")
-user4 = User.new(
+user = User.new(
     first_name: 'Jennifer',
     last_name: 'Lopez',
     email: 'jennifer.lopez@example.com',
@@ -197,7 +197,7 @@ user.photo.attach(io: file, filename: "Beyonce.png", content_type: "image/png")
 user.interest_list.add("performing-arts", "concerts", "festivals")
 user.save
 
-file = URI.open("https://assets.glamour.de/photos/62e0fb13ca63b0531d1baf12/3:4/w_675,h_900,c_limit/Alicia-Vikander-Fehlgeburt.jpg")
+file = URI.open("https://images.t-online.de/2023/02/2zOo5YJ9npjS/392x333:2351x1763/fit-in/1800x0/tom-hanks-der-schauspieler-zeigt-sich-in-seinem-neuen-film-von-einer-ungewohnten-seite.jpg")
 user = User.new(
     first_name: 'Ryan',
     last_name: 'Reynolds',
