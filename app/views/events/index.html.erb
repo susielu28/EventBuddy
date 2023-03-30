@@ -80,7 +80,7 @@
             <% end %>
             <div class="card-body">
 
-            <h2 class="card-title"><%= event.name %></h2>
+            <h2 class="card-title"><%= event.name.truncate(27, :separator => ' ') %></h2>
 
             <div class="d-flex justify-content-between">
               <span><i class="fas fa-calendar-alt"></i> <%= event.date.strftime("%d %B, %Y") %></span>
@@ -140,7 +140,7 @@
             <% end %>
             <div class="card-body">
 
-            <h2 class="card-title"><%= event.name %></h2>
+            <h2 class="card-title"><%= event.name.truncate(27, :separator => ' ') %></h2>
 
             <div class="d-flex justify-content-between">
               <span><i class="fas fa-calendar-alt"></i> <%= event.date.strftime("%d %B, %Y") %></span>
