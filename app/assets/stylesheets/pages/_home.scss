@@ -45,6 +45,15 @@
   text-shadow: #8ECAE6;
 }
 
+.title-works {
+  text-align: center;
+  padding-top: 40px;
+  padding-bottom: 20px;
+  font-size: larger;
+  color: #023047;
+  text-shadow: #8ECAE6;
+}
+
 .cards {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
@@ -67,13 +76,6 @@
   display: center;
   justify-content: center;
   align-items: center;
- /*  color: white;
-  font-size: 24px;
-  font-weight: bold;
-  // text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
-  box-shadow: 0 0 15px rgba(0,0,0,0.2);
-  background-color: white;
-  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000; */
 }
 
 

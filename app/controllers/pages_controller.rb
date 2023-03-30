@@ -3,7 +3,7 @@ class PagesController < ApplicationController
 
   def home
     @elton = Event.where("venue ILIKE '%london%'").where("name ILIKE '%elton%'").first
-    @brighton = Event.where("venue ILIKE '%london%'").where("name ILIKE '%tottenham%' AND name ILIKE '%brighton%'").first
+    @brighton = Event.where("venue ILIKE '%london%'").where("name ILIKE '%tottenham%'").first
     @rockofages = Event.where("venue ILIKE '%berlin%'").where("name ILIKE '%rock%'").first
   end
 end
