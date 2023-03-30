@@ -21,10 +21,12 @@ class EventsController < ApplicationController
 
     if user_signed_in?
       @suggestions = []
+      @suggested_events =  (params[:query].present? && params[:query] != "") ? Event.search_all_events(params[:query]) : Event.all
       current_user.interest_list.each do |interest|
-        @suggestions << Event.where(genre: interest)
+        @suggestions << @suggested_events.where(genre: interest)
       end
       @suggestions.flatten!
+      apply_filters_to_suggestions if params
     end
   end
 
@@ -129,5 +131,15 @@ class EventsController < ApplicationController
     @events = @events.where('genre ILIKE ?', "%#{params[:genre]}%") if params[:genre].present? && params[:genre] != ""
     @events = @events.where(date: DateTime.parse(params[:date_min])..DateTime.parse(params[:date_max])) if (params[:date_min].present? && params[:date_min] != "") && (params[:date_max].present? && params[:date_max] != "")
     @events = @events.where('price >= ? AND price <= ?', params[:price_min], params[:price_max]) if params[:price_min].present? && params[:price_max].present?
+  end
+
+  def apply_filters_to_suggestions
+    puts params.inspect
+    @suggestions = @suggestions.select { |suggestion| suggestion.name.include? params[:name] } if params[:name].present? && params[:name] != ""
+    @suggestions = @suggestions.select { |suggestion| suggestion.genre.include? params[:genre] } if params[:genre].present? && params[:genre] != ""
+    # @suggestions = @suggestions.where('venue ILIKE ?', "%#{params[:venue]}%") if params[:venue].present? && params[:venue] != ""
+    # @suggestions = @suggestions.where('genre ILIKE ?', "%#{params[:genre]}%") if params[:genre].present? && params[:genre] != ""
+    # @suggestions = @suggestions.where(date: DateTime.parse(params[:date_min])..DateTime.parse(params[:date_max])) if (params[:date_min].present? && params[:date_min] != "") && (params[:date_max].present? && params[:date_max] != "")
+    # @suggestions = @suggestions.where('price >= ? AND price <= ?', params[:price_min], params[:price_max]) if params[:price_min].present? && params[:price_max].present?
   end
 end
