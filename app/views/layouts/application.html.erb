@@ -39,12 +39,21 @@
     <%# <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%# <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
 
-</head>
+  </head>
 
-  <body><%= render "shared/navbar" %>
-<%= render "shared/flashes" %>
-    <%= yield %>
-    <%= render "shared/footer" %>
+
+  <body>
+
+    <div class="wrapper">
+      <div>
+        <%= render "shared/navbar" %>
+        <%= render "shared/flashes" %>
+        <%= yield %>
+      </div>
+      <%= render "shared/footer" %>
+    </div>
 
   </body>
+
+
 </html>

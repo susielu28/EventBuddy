@@ -17,12 +17,15 @@ class EventsController < ApplicationController
         info_window_html: render_to_string(partial: "info_window", locals: {event: event}),
         marker_html: render_to_string(partial: "marker")
       }
+      end
+      
+    if user_signed_in?
+      @suggestions = []
+      current_user.interest_list.each do |interest|
+        @suggestions << Event.where(genre: interest)
+      end
+      @suggestions.flatten!
     end
-    @suggestions = []
-    current_user.interest_list.each do |interest|
-      @suggestions << Event.where(genre: interest)
-    end
-    @suggestions.flatten!
   end
 
   # GET /events/1
